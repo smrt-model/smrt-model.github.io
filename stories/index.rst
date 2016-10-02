@@ -1,10 +1,10 @@
-.. title: Snow Radiative Transfer Model
+.. title: Snow Microwave Radiative Transfer (SMRT) model
 .. slug: index
 .. date: 2016-10-02 16:03:55 UTC
-.. tags: 
-.. category: 
-.. link: 
-.. description: 
+.. tags:
+.. category:
+.. link:
+.. description:
 .. type: text
 
 
