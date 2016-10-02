@@ -1,4 +1,4 @@
-.. title: index
+.. title: Snow Radiative Transfer Model
 .. slug: index
 .. date: 2016-10-02 16:03:55 UTC
 .. tags: 
@@ -9,8 +9,12 @@
 
 
 This is the first page
-============================
+======================
 
-Try to look at this notebook about `memls_legacy <memls_legacy>`_
+Heading level 2
+---------------
+
+
+Look at this notebook about `memls_legacy <memls_legacy>`_
 
 
