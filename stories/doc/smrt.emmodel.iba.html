@@ -1,0 +1,448 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.emmodel.iba module &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="up" title="smrt.emmodel package" href="smrt.emmodel.html" />
+    <link rel="next" title="smrt.emmodel.nonescattering module" href="smrt.emmodel.nonescattering.html" />
+    <link rel="prev" title="smrt.emmodel.dmrt_shortrange module" href="smrt.emmodel.dmrt_shortrange.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="smrt.emmodel.html">smrt.emmodel package</a><ul>
+      <li>Previous: <a href="smrt.emmodel.dmrt_shortrange.html" title="previous chapter">smrt.emmodel.dmrt_shortrange module</a></li>
+      <li>Next: <a href="smrt.emmodel.nonescattering.html" title="next chapter">smrt.emmodel.nonescattering module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.emmodel.iba">
+<span id="smrt-emmodel-iba-module"></span><h1>smrt.emmodel.iba module<a class="headerlink" href="#module-smrt.emmodel.iba" title="Permalink to this headline">¶</a></h1>
+<p>Compute scattering from Improved Born Approximation theory. This model allows for different
+microstructural models provided that the Fourier transform of the correlation function
+may be performed. All properties relate to a single layer.</p>
+<dl class="class">
+<dt id="smrt.emmodel.iba.IBA">
+<em class="property">class </em><code class="descname">IBA</code><span class="sig-paren">(</span><em>sensor</em>, <em>layer</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Improved Born Approximation electromagnetic model class.</p>
+<p>As with all electromagnetic modules, this class is used to create an electromagnetic
+object that holds information about the effective permittivity, extinction coefficient and
+phase function for a particular snow layer. Due to the frequency dependence, information
+about the sensor is required. Passive and active sensors also have different requirements on
+the size of the phase matrix as redundant information is not calculated for the
+passive case.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sensor</strong> &#8211; object containing sensor characteristics</li>
+<li><strong>layer</strong> &#8211; object containing snow layer characteristics (single layer)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage Example:</strong></p>
+<blockquote>
+<div><p>This class is not normally accessed directly by the user, but forms part of the
+smrt model, together with the radiative solver (in this example, <cite>dort</cite>) i.e.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">smrt</span> <span class="k">import</span> <span class="n">make_model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="s2">&quot;iba&quot;</span><span class="p">,</span> <span class="s2">&quot;dort&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><cite>iba</cite> does not need to be imported by the user due to autoimport of electromagnetic model modules</p>
+</div></blockquote>
+<dl class="method">
+<dt id="smrt.emmodel.iba.IBA.calc_iba_coeff">
+<code class="descname">calc_iba_coeff</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA.calc_iba_coeff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate angular independent IBA coefficient: used in both scattering coefficient and phase function calculations</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Requires mean squared field ratio (uses mean_sq_field_ratio method)</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.emmodel.iba.IBA.mean_sq_field_ratio">
+<code class="descname">mean_sq_field_ratio</code><span class="sig-paren">(</span><em>e0</em>, <em>eps</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA.mean_sq_field_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mean squared field ratio calculation</p>
+<p>Uses layer effective permittivity</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>e0</strong> &#8211; background relative permittivity</li>
+<li><strong>eps</strong> &#8211; scattering constituent relative permittivity</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.emmodel.iba.IBA.basic_check">
+<code class="descname">basic_check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA.basic_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="smrt.emmodel.iba.IBA.set_max_mode">
+<code class="descname">set_max_mode</code><span class="sig-paren">(</span><em>m_max</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA.set_max_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the maximum level of phase matrix Fourier decomposition needed. Called by
+the radiative transfer solver.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>m_max</strong> &#8211; maximum Fourier decomposition mode needed</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">m_max = 0 for passive</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.emmodel.iba.IBA.ks_integrand">
+<code class="descname">ks_integrand</code><span class="sig-paren">(</span><em>mu</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA.ks_integrand" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the scattering function for the IBA model.</p>
+<p>It uses the phase matrix in the 1-2 frame. With incident angle chosen to be 0, the scattering
+angle becomes the scattering zenith angle:</p>
+<div class="math">
+<p><span class="math">\Theta = \theta</span></p>
+</div><p>Scattering coefficient is determined by integration over the scattering angle (0 to pi)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mu</strong> &#8211; cosine of the scattering angle (single angle)</td>
+</tr>
+</tbody>
+</table>
+<div class="math">
+<p><span class="math">ks\_int = p11 + p22</span></p>
+</div><p>The integration is performed outside this method.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.emmodel.iba.IBA.ft_even_phase">
+<code class="descname">ft_even_phase</code><span class="sig-paren">(</span><em>m</em>, <em>mu</em>, <em>npol=None</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA.ft_even_phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>IBA phase matrix.</p>
+<p>These are the Fourier decomposed phase matrices for modes m = 0, 1, 2.... This method
+creates or accesses the cache of ft_phase so Fourier Decomposition only needs to be
+done once per layer for all modes.</p>
+<p>Coefficients within the phase function are</p>
+<p>Passive case (m = 0 only) and active (m = 0)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">M</span>  <span class="o">=</span> <span class="p">[</span><span class="n">Pvvp</span>  <span class="n">Pvhp</span><span class="p">]</span>
+     <span class="p">[</span><span class="n">Phvp</span>  <span class="n">Phhp</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Active case (m &gt; 0):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span>  <span class="p">[</span><span class="n">Pvvp</span> <span class="n">Pvhp</span> <span class="n">Pvup</span><span class="p">]</span>
+     <span class="p">[</span><span class="n">Phvp</span> <span class="n">Phhp</span> <span class="n">Phup</span><span class="p">]</span>
+     <span class="p">[</span><span class="n">Puvp</span> <span class="n">Puhp</span> <span class="n">Puup</span><span class="p">]</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>m</strong> &#8211; mode for decomposed phase matrix (0, 1, 2)</li>
+<li><strong>mu</strong> &#8211; 1-D array of cosines of incidence angle</li>
+<li><strong>npol</strong> &#8211; [Optional] number of polarizations - normally set from sensor properties</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Returns cached_phase[m]:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">cached phase matrix for all scattering streams for one Fourier Decomposition mode</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The structure of the returned cached_phase is a block-by-block assembly of
+individual phase matrices for each scattering geometry up to n-streams e.g.:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td rowspan="2">stream</td>
+<td rowspan="2">i=0</td>
+<td rowspan="2">i=1</td>
+<td rowspan="2">i</td>
+<td rowspan="2">i=n</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">i=0</td>
+<td rowspan="2"><p class="first">Pvvp  Pvhp</p>
+<p class="last">Phvp  Phhp</p>
+</td>
+<td rowspan="2"><p class="first">Pvvp  Pvhp</p>
+<p class="last">Phvp  Phhp</p>
+</td>
+<td rowspan="2"><p class="first">...    ...</p>
+<p class="last">...    ...</p>
+</td>
+<td rowspan="2"><p class="first">Pvvp  Pvhp</p>
+<p class="last">Phvp  Phhp</p>
+</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">i</td>
+<td rowspan="2"><p class="first">.      .</p>
+<p class="last">.      .</p>
+</td>
+<td rowspan="2"><p class="first">.      .</p>
+<p class="last">.      .</p>
+</td>
+<td rowspan="2"><p class="first">...    ...</p>
+<p class="last">...    ...</p>
+</td>
+<td rowspan="2"><p class="first">.      .</p>
+<p class="last">.      .</p>
+</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="2">i=n</td>
+<td rowspan="2"><p class="first">Pvvp  Pvhp</p>
+<p class="last">Phvp  Phhp</p>
+</td>
+<td rowspan="2"><p class="first">Pvvp  Pvhp</p>
+<p class="last">Phvp  Phhp</p>
+</td>
+<td rowspan="2"><p class="first">...    ...</p>
+<p class="last">...    ...</p>
+</td>
+<td rowspan="2"><p class="first">Pvvp  Pvhp</p>
+<p class="last">Phvp  Phhp</p>
+</td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.emmodel.iba.IBA.precompute_ft_phase">
+<code class="descname">precompute_ft_phase</code><span class="sig-paren">(</span><em>mu</em>, <em>m_max</em>, <em>npol</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA.precompute_ft_phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculation of the Fourier decomposed IBA phase function.</p>
+<p>This method calculates the Improved Born Approximation phase matrix for all
+Fourier decomposition modes and stores the output in a cache so the calculation
+is not repeated for each mode. The radiative transfer solver then accesses the cache.</p>
+<p>The IBA phase function is given in Mätzler, C. (1998). Improved Born approximation for
+scattering of radiation in a granular medium. <em>Journal of Applied Physics</em>, 83(11),
+6111-6117. Here, calculation of the phase matrix is based on the phase matrix in
+the 1-2 frame, which is then rotated according to the incident and scattering angles,
+as described in e.g. <em>Thermal Microwave Radiation: Applications for Remote Sensing, Mätzler (2006)</em>.
+Fourier decomposition is then performed to separate the azimuthal dependency from the incidence angle dependency.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mu</strong> &#8211; 1-D array of cosine of radiation stream angles (set by solver)</li>
+<li><strong>m_max</strong> &#8211; maximum Fourier decomposition mode needed</li>
+<li><strong>npol</strong> &#8211; number of polarizations considered (set from sensor characteristics)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Calculates cached_phase: Stored phase matrix for each Fourier mode m</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The size of the cached_phase[m] matrix depends on the mode. Only p11, p12, p21 and p22
+elements are needed for the m = 0 mode, whereas an extended matrix with the p13, p23, p31, p32 and p33
+elements are required for m &gt; 0 modes (active only). The size of the cached phase matrix
+will also vary with snow layer, as it depends on the number of streams simulated (length of mu).</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.emmodel.iba.IBA.phase">
+<code class="descname">phase</code><span class="sig-paren">(</span><em>mu</em>, <em>phi</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA.phase" title="Permalink to this definition">¶</a></dt>
+<dd><p>IBA Phase function (not decomposed).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>SMRTError</strong> &#8211; This has not yet been implemented</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Later implementation: it may be required by other solver modules</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.emmodel.iba.IBA.calc_ka">
+<code class="descname">calc_ka</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA.calc_ka" title="Permalink to this definition">¶</a></dt>
+<dd><p>IBA absorption coefficient calculated from the low-loss assumption of a general lossy medium.</p>
+<p>Calculates ka from wavenumber in free space (determined from sensor), and effective permittivity
+of the medium (snow layer property)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return ka:</th><td class="field-body">absorption coefficient [m <sup>-1</sup>]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This may not be suitable for high density material</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.emmodel.iba.IBA.ke">
+<code class="descname">ke</code><span class="sig-paren">(</span><em>mu</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA.ke" title="Permalink to this definition">¶</a></dt>
+<dd><p>IBA extinction coefficient matrix</p>
+<p>The extinction coefficient is defined as the sum of scattering and absorption
+coefficients. However, the radiative transfer solver requires this in matrix form,
+so this method is called by the solver.</p>
+<blockquote>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param mu:</th><td class="field-body">1-D array of cosines of radiation stream incidence angles</td>
+</tr>
+<tr class="field-even field"><th class="field-name">returns ke:</th><td class="field-body">extinction coefficient matrix [m <sup>-1</sup>]</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Spherical isotropy assumed (all elements in matrix are identical).</p>
+<p class="last">Size of extinction coefficient matrix depends on number of radiation
+streams, which is set by the radiative transfer solver.</p>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.emmodel.iba.IBA.effective_permittivity">
+<code class="descname">effective_permittivity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA.effective_permittivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculation of complex effective permittivity of the medium.</p>
+<p>The Maxwell-Garnett representation has been selected, and is taken from the
+maxwell_garnett function in the smrt.emmodel.commonfunc module.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Returns effective_permittivity:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">complex effective permittivity of the medium</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="smrt.emmodel.iba.IBA_MM">
+<em class="property">class </em><code class="descname">IBA_MM</code><span class="sig-paren">(</span><em>sensor</em>, <em>layer</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.iba.IBA_MM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#smrt.emmodel.iba.IBA" title="smrt.emmodel.iba.IBA"><code class="xref py py-class docutils literal"><span class="pre">smrt.emmodel.iba.IBA</span></code></a></p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.emmodel.iba.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

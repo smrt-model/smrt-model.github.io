@@ -1,0 +1,24 @@
+smrt.emmodel package
+====================
+
+.. automodule:: smrt.emmodel
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   smrt.emmodel.commonfunc
+   smrt.emmodel.commontest
+   smrt.emmodel.dmrt_shortrange
+   smrt.emmodel.iba
+   smrt.emmodel.nonescattering
+   smrt.emmodel.rayleigh
+   smrt.emmodel.test_commonfunc
+   smrt.emmodel.test_dmrt_shortrange
+   smrt.emmodel.test_iba
+   smrt.emmodel.test_rayleigh
+

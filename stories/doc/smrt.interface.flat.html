@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.interface.flat module &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="up" title="smrt.interface package" href="smrt.interface.html" />
+    <link rel="next" title="smrt.interface.transparent module" href="smrt.interface.transparent.html" />
+    <link rel="prev" title="smrt.interface package" href="smrt.interface.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="smrt.interface.html">smrt.interface package</a><ul>
+      <li>Previous: <a href="smrt.interface.html" title="previous chapter">smrt.interface package</a></li>
+      <li>Next: <a href="smrt.interface.transparent.html" title="next chapter">smrt.interface.transparent module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.interface.flat">
+<span id="smrt-interface-flat-module"></span><h1>smrt.interface.flat module<a class="headerlink" href="#module-smrt.interface.flat" title="Permalink to this headline">¶</a></h1>
+<p>Implement the flat interface boundary condition between layers charcterized by their effective permittivities. The reflection and transmission
+are computed using the Fresnel coefficient.</p>
+<dl class="class">
+<dt id="smrt.interface.flat.Flat">
+<em class="property">class </em><code class="descname">Flat</code><a class="headerlink" href="#smrt.interface.flat.Flat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>A flat surface. The reflection is in the specular direction and the coefficient is calculated with the Fresnel coefficients</p>
+<dl class="classmethod">
+<dt id="smrt.interface.flat.Flat.specular_reflection_matrix">
+<em class="property">classmethod </em><code class="descname">specular_reflection_matrix</code><span class="sig-paren">(</span><em>frequency</em>, <em>eps_1</em>, <em>eps_2</em>, <em>mu1</em>, <em>npol</em>, <em>compute_coherent_only</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.interface.flat.Flat.specular_reflection_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>compute the reflection coefficients for the azimuthal mode m</dt>
+<dd>and for an array of incidence angles (given by their cosine)
+in medium 1. Medium 2 is where the beam is transmitted.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>eps_1</strong> &#8211; permittivity of the medium where the incident beam is propagating.</li>
+<li><strong>eps_2</strong> &#8211; permittivity of the other medium</li>
+<li><strong>mu1</strong> &#8211; array of cosine of incident angles</li>
+<li><strong>npol</strong> &#8211; number of polarization</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the reflection matrix</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="smrt.interface.flat.Flat.coherent_transmission_matrix">
+<em class="property">classmethod </em><code class="descname">coherent_transmission_matrix</code><span class="sig-paren">(</span><em>frequency</em>, <em>eps_1</em>, <em>eps_2</em>, <em>mu1</em>, <em>npol</em>, <em>compute_coherent_only</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.interface.flat.Flat.coherent_transmission_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>compute the transmission coefficients for the azimuthal mode m</dt>
+<dd>and for an array of incidence angles (given by their cosine)
+in medium 1. Medium 2 is where the beam is transmitted.</dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>eps_1</strong> &#8211; permittivity of the medium where the incident beam is propagating.</li>
+<li><strong>eps_2</strong> &#8211; permittivity of the other medium</li>
+<li><strong>mu1</strong> &#8211; array of cosine of incident angles</li>
+<li><strong>npol</strong> &#8211; number of polarization</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the transmission matrix</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.interface.flat.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.emmodel package &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="next" title="smrt.emmodel.commonfunc module" href="smrt.emmodel.commonfunc.html" />
+    <link rel="prev" title="smrt.atmosphere.simple_isotropic_atmosphere module" href="smrt.atmosphere.simple_isotropic_atmosphere.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="smrt.atmosphere.simple_isotropic_atmosphere.html" title="previous chapter">smrt.atmosphere.simple_isotropic_atmosphere module</a></li>
+      <li>Next: <a href="smrt.emmodel.commonfunc.html" title="next chapter">smrt.emmodel.commonfunc module</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.emmodel">
+<span id="smrt-emmodel-package"></span><h1>smrt.emmodel package<a class="headerlink" href="#module-smrt.emmodel" title="Permalink to this headline">¶</a></h1>
+<p>This directory contains the different electromagnetic (EM) models that compute the scattering and absorption coefficients
+and the phase function in a _given_ _layer_. The computation of the inter-layer propagation is done by the
+<a class="reference internal" href="smrt.rtsolver.html#module-smrt.rtsolver" title="smrt.rtsolver"><code class="xref py py-mod docutils literal"><span class="pre">rtsolver</span></code></a> package.</p>
+<p>The EM models differ in many aspects, one of which is the constraint on the microstructure model
+they can be used with. The <a class="reference internal" href="smrt.emmodel.iba.html#module-smrt.emmodel.iba" title="smrt.emmodel.iba"><code class="xref py py-mod docutils literal"><span class="pre">smrt.emmodel.iba</span></code></a> model can use any
+microstructure model that defines autocorrelation functions (or its FT). In contrast  others such as
+<a class="reference internal" href="smrt.emmodel.dmrt_shortrange.html#module-smrt.emmodel.dmrt_shortrange" title="smrt.emmodel.dmrt_shortrange"><code class="xref py py-mod docutils literal"><span class="pre">smrt.emmodel.dmrt_shortrange</span></code></a> is bound to the <code class="xref py py-mod docutils literal"><span class="pre">smrt.microstructuremodel.sticky_hard_spheres</span></code> microstructure 
+for theoretical reasons.</p>
+<p>The selection of the EM model is done with the <a class="reference internal" href="smrt.core.model.html#smrt.core.model.make_model" title="smrt.core.model.make_model"><code class="xref py py-func docutils literal"><span class="pre">smrt.core.model.make_model()</span></code></a> function</p>
+<div class="admonition-for-developers admonition">
+<p class="first admonition-title"><strong>For developers</strong></p>
+<p>To implement a new scattering formulation / phase function, we recommend to start from an existing module, probably rayleigh.py is the simplest.
+Copy this file to <cite>myscatteringtheory.py</cite> or any meaningful name. It can be directly used with <a class="reference internal" href="smrt.core.model.html#smrt.core.model.make_model" title="smrt.core.model.make_model"><code class="xref py py-func docutils literal"><span class="pre">make_model()</span></code></a> function as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="s2">&quot;myscatteringtheory&quot;</span><span class="p">,</span> <span class="s2">&quot;dort&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that if the file is not in the emmodels directory, you must explicitly import the module and pass it 
+to make_model as a module object (instead of a string).</p>
+<dl class="docutils">
+<dt>An emmodel model must define:</dt>
+<dd><ul class="first last simple">
+<li>ks and ka attributes/properties</li>
+<li>ke() and effective_permittivity() methods</li>
+<li>at least one of the phase and ft_even_phase methods (both is better).</li>
+</ul>
+</dd>
+</dl>
+<p class="last">For the details it is recommended to contact the authors as the calling arguments and required methods may change time to time.</p>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.commonfunc.html">smrt.emmodel.commonfunc module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.dmrt_shortrange.html">smrt.emmodel.dmrt_shortrange module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.iba.html">smrt.emmodel.iba module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.nonescattering.html">smrt.emmodel.nonescattering module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.rayleigh.html">smrt.emmodel.rayleigh module</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.emmodel.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

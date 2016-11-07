@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.rtsolver.dort module &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="up" title="smrt.rtsolver package" href="smrt.rtsolver.html" />
+    <link rel="next" title="smrt.core package" href="smrt.core.html" />
+    <link rel="prev" title="smrt.rtsolver package" href="smrt.rtsolver.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="smrt.rtsolver.html">smrt.rtsolver package</a><ul>
+      <li>Previous: <a href="smrt.rtsolver.html" title="previous chapter">smrt.rtsolver package</a></li>
+      <li>Next: <a href="smrt.core.html" title="next chapter">smrt.core package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.rtsolver.dort">
+<span id="smrt-rtsolver-dort-module"></span><h1>smrt.rtsolver.dort module<a class="headerlink" href="#module-smrt.rtsolver.dort" title="Permalink to this headline">¶</a></h1>
+<p>The Discrete Ordinate and Eigenvalue Solver is a multi-stream solver of the radiative transfer model. It is precise but less efficient 
+than 2 or 6 flux solvers. Different flavours of DORT (or DISORT) exist depending on the mode (passive or active), on the density of the medium
+(sparse media have trivial inter-layer boundary conditions), on the way the streams are connected between the layers and on the way the phase
+function is prescribed. The actual version is a blend between Picard et al. 2004 (active mode for sparse media) and DMRT-ML (Picard et al. 2013) which works
+in passive mode only for snow. The DISORT often used in optics (Stamnes et al. 1988) works only for sparse medium and uses a development of the phase
+function in Legendre polynomia on theta. The version used in DMRT-QMS (L. Tsang&#8217;s group) is similar to the present implementation except
+it uses spline interpolation to connect constant-angle streams between the layers although we use direct connection by varying the angle 
+according to Snell&#8217;s law. A practical consequence is that the number of streams vary (due to internal reflection) and the value <cite>n_max_stream</cite>
+only applies in the most refringent layer. The number of outgoing streams in the air is usually smaller, sometimes twice smaller (depends on the density profile).
+It is important not to set too low a value for n_max_stream. E.g. 32 is usually fine, 64 or 128 are better but simulations will be much slower.</p>
+<dl class="class">
+<dt id="smrt.rtsolver.dort.DORT">
+<em class="property">class </em><code class="descname">DORT</code><span class="sig-paren">(</span><em>n_max_stream=32</em>, <em>m_max=2</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.DORT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Discrete Ordinate and Eigenvalue Solver</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>n_max_stream</strong> &#8211; number of stream in the most refringent layer</li>
+<li><strong>m_max</strong> &#8211; number of mode (azimuth)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="smrt.rtsolver.dort.DORT.solve">
+<code class="descname">solve</code><span class="sig-paren">(</span><em>snowpack</em>, <em>emmodels</em>, <em>sensor</em>, <em>atmosphere=None</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.DORT.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>solve the radiative transfer equation for a given snowpack, emmodels and sensor configuration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.rtsolver.dort.DORT.dort">
+<code class="descname">dort</code><span class="sig-paren">(</span><em>m_max=0</em>, <em>special_return=False</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.DORT.dort" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="smrt.rtsolver.dort.DORT.prepare_intensity_array">
+<code class="descname">prepare_intensity_array</code><span class="sig-paren">(</span><em>outmu</em>, <em>outweight</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.DORT.prepare_intensity_array" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="smrt.rtsolver.dort.DORT.dort_modem_banded">
+<code class="descname">dort_modem_banded</code><span class="sig-paren">(</span><em>m</em>, <em>n_stream</em>, <em>mu</em>, <em>weight</em>, <em>outmu</em>, <em>intensity_down_m</em>, <em>compute_coherent_only=False</em>, <em>special_return=False</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.DORT.dort_modem_banded" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="smrt.rtsolver.dort.muleye">
+<code class="descname">muleye</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.muleye" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="smrt.rtsolver.dort.todiag">
+<code class="descname">todiag</code><span class="sig-paren">(</span><em>bmat</em>, <em>ij</em>, <em>dmat</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.todiag" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="smrt.rtsolver.dort.extend_2pol_npol">
+<code class="descname">extend_2pol_npol</code><span class="sig-paren">(</span><em>x</em>, <em>npol</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.extend_2pol_npol" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="smrt.rtsolver.dort.solve_eigenvalue_problem_disortorig">
+<code class="descname">solve_eigenvalue_problem_disortorig</code><span class="sig-paren">(</span><em>m</em>, <em>ke</em>, <em>ft_even_phase</em>, <em>mu</em>, <em>weight</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.solve_eigenvalue_problem_disortorig" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="smrt.rtsolver.dort.solve_eigenvalue_problem_picard">
+<code class="descname">solve_eigenvalue_problem_picard</code><span class="sig-paren">(</span><em>m</em>, <em>ke</em>, <em>ft_even_phase</em>, <em>mu</em>, <em>weight</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.solve_eigenvalue_problem_picard" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="smrt.rtsolver.dort.solve_eigenvalue_problem">
+<code class="descname">solve_eigenvalue_problem</code><span class="sig-paren">(</span><em>m</em>, <em>ke</em>, <em>ft_even_phase</em>, <em>mu</em>, <em>weight</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.solve_eigenvalue_problem" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="smrt.rtsolver.dort.compute_stream">
+<code class="descname">compute_stream</code><span class="sig-paren">(</span><em>n_max_stream</em>, <em>permittivity</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.compute_stream" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="smrt.rtsolver.dort.gaussquad">
+<code class="descname">gaussquad</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.rtsolver.dort.gaussquad" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.rtsolver.dort.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

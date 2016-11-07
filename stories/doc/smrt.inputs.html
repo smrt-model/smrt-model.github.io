@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.inputs package &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="next" title="smrt.inputs.make_medium module" href="smrt.inputs.make_medium.html" />
+    <link rel="prev" title="SMRT Documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">SMRT Documentation</a></li>
+      <li>Next: <a href="smrt.inputs.make_medium.html" title="next chapter">smrt.inputs.make_medium module</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.inputs">
+<span id="smrt-inputs-package"></span><h1>smrt.inputs package<a class="headerlink" href="#module-smrt.inputs" title="Permalink to this headline">¶</a></h1>
+<p>This package includes modules to create the medium and sensor configuration required for the simulations.
+The recommended way to build these objects:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">smrt</span> <span class="k">import</span> <span class="n">make_snowpack</span><span class="p">,</span> <span class="n">sensor_list</span>
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">make_snowpack</span><span class="p">([</span><span class="mi">1000</span><span class="p">],</span> <span class="n">density</span><span class="o">=</span><span class="p">[</span><span class="mi">300</span><span class="p">],</span> <span class="n">microstructure_model</span><span class="o">=</span><span class="s1">&#39;sticky_hard_spheres&#39;</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3e-3</span><span class="p">],</span> <span class="n">stickiness</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">radiometer</span> <span class="o">=</span> <span class="n">sensor_list</span><span class="o">.</span><span class="n">amsre</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Note that the function <a class="reference internal" href="smrt.inputs.make_medium.html#smrt.inputs.make_medium.make_snowpack" title="smrt.inputs.make_medium.make_snowpack"><code class="xref py py-func docutils literal"><span class="pre">make_snowpack()</span></code></a> and the module <a class="reference internal" href="smrt.inputs.sensor_list.html#module-smrt.inputs.sensor_list" title="smrt.inputs.sensor_list"><code class="xref py py-mod docutils literal"><span class="pre">sensor_list</span></code></a> is directly imported from smrt, which is convenient but they effectively lie 
+in the package <a class="reference internal" href="#module-smrt.inputs" title="smrt.inputs"><code class="xref py py-mod docutils literal"><span class="pre">smrt.inputs</span></code></a>. They could be imported using the full path as follows:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">smrt.inputs.make_medium</span> <span class="k">import</span> <span class="n">make_snowpack</span>
+<span class="kn">from</span> <span class="nn">smrt.inputs</span> <span class="k">import</span> <span class="n">sensor_list</span>
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">make_snowpack</span><span class="p">([</span><span class="mi">1000</span><span class="p">],</span> <span class="n">density</span><span class="o">=</span><span class="p">[</span><span class="mi">300</span><span class="p">],</span> <span class="n">microstructure_model</span><span class="o">=</span><span class="s1">&#39;sticky_hard_spheres&#39;</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3e-3</span><span class="p">],</span> <span class="n">stickiness</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">radiometer</span> <span class="o">=</span> <span class="n">sensor_list</span><span class="o">.</span><span class="n">amsre</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Extension of the modules in the <cite>inputs</cite> package is welcome. This is as simple as adding new functions in the modules (e.g. in <a class="reference internal" href="smrt.inputs.sensor_list.html#module-smrt.inputs.sensor_list" title="smrt.inputs.sensor_list"><code class="xref py py-mod docutils literal"><span class="pre">sensor_list</span></code></a>) or
+adding a new modules (e.g. <cite>my_make_medium.py</cite>) in this package and use the full path import.</p>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.make_medium.html">smrt.inputs.make_medium module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.make_soil.html">smrt.inputs.make_soil module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.sensor_list.html">smrt.inputs.sensor_list module</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.inputs.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

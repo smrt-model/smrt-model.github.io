@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt package &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt">
+<span id="smrt-package"></span><h1>smrt package<a class="headerlink" href="#module-smrt" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">smrt.atmosphere package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smrt.atmosphere.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smrt.atmosphere.simple_isotropic_atmosphere.html">smrt.atmosphere.simple_isotropic_atmosphere module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">smrt.core package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smrt.core.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smrt.core.error.html">smrt.core.error module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.core.fresnel.html">smrt.core.fresnel module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.core.globalconstants.html">smrt.core.globalconstants module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.core.layer.html">smrt.core.layer module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.core.model.html">smrt.core.model module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.core.plugin.html">smrt.core.plugin module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.core.result.html">smrt.core.result module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.core.sensor.html">smrt.core.sensor module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.core.snowpack.html">smrt.core.snowpack module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.core.substrate.html">smrt.core.substrate module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">smrt.emmodel package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smrt.emmodel.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smrt.emmodel.commonfunc.html">smrt.emmodel.commonfunc module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.emmodel.dmrt_shortrange.html">smrt.emmodel.dmrt_shortrange module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.emmodel.iba.html">smrt.emmodel.iba module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.emmodel.nonescattering.html">smrt.emmodel.nonescattering module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.emmodel.rayleigh.html">smrt.emmodel.rayleigh module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">smrt.inputs package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smrt.inputs.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smrt.inputs.make_medium.html">smrt.inputs.make_medium module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.inputs.make_soil.html">smrt.inputs.make_soil module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.inputs.sensor_list.html">smrt.inputs.sensor_list module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">smrt.interface package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smrt.interface.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smrt.interface.flat.html">smrt.interface.flat module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.interface.transparent.html">smrt.interface.transparent module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">smrt.microstructure_model package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smrt.microstructure_model.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smrt.microstructure_model.autocorrelation.html">smrt.microstructure_model.autocorrelation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.microstructure_model.exponential.html">smrt.microstructure_model.exponential module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.microstructure_model.gaussian_random_field.html">smrt.microstructure_model.gaussian_random_field module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.microstructure_model.independent_sphere.html">smrt.microstructure_model.independent_sphere module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.microstructure_model.sampled_autocorrelation.html">smrt.microstructure_model.sampled_autocorrelation module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.microstructure_model.sticky_hard_spheres.html">smrt.microstructure_model.sticky_hard_spheres module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.microstructure_model.teubner_strey.html">smrt.microstructure_model.teubner_strey module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">smrt.permittivity package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smrt.permittivity.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smrt.permittivity.ice.html">smrt.permittivity.ice module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">smrt.rtsolver package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smrt.rtsolver.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smrt.rtsolver.dort.html">smrt.rtsolver.dort module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">smrt.substrate package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smrt.substrate.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smrt.substrate.flat.html">smrt.substrate.flat module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.substrate.reflector.html">smrt.substrate.reflector module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.substrate.reflector_backscatter.html">smrt.substrate.reflector_backscatter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.substrate.soil_wegmuller.html">smrt.substrate.soil_wegmuller module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">smrt.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smrt.utils.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="smrt.utils.dmrt_qms_legacy.html">smrt.utils.dmrt_qms_legacy module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.utils.hut_legacy.html">smrt.utils.hut_legacy module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.utils.memls_legacy.html">smrt.utils.memls_legacy module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="smrt.utils.repo_tools.html">smrt.utils.repo_tools module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.core.result module &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="up" title="smrt.core package" href="smrt.core.html" />
+    <link rel="next" title="smrt.core.sensor module" href="smrt.core.sensor.html" />
+    <link rel="prev" title="smrt.core.plugin module" href="smrt.core.plugin.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="smrt.core.html">smrt.core package</a><ul>
+      <li>Previous: <a href="smrt.core.plugin.html" title="previous chapter">smrt.core.plugin module</a></li>
+      <li>Next: <a href="smrt.core.sensor.html" title="next chapter">smrt.core.sensor module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.core.result">
+<span id="smrt-core-result-module"></span><h1>smrt.core.result module<a class="headerlink" href="#module-smrt.core.result" title="Permalink to this headline">¶</a></h1>
+<p>The results of RT Solver are hold by the <a class="reference internal" href="#smrt.core.result.Result" title="smrt.core.result.Result"><code class="xref py py-class docutils literal"><span class="pre">Result</span></code></a> class. This class provides several functions
+to access to the Stokes Vector and Muller matrix in a simple way. Most notable ones are <a class="reference internal" href="#smrt.core.result.Result.TbV" title="smrt.core.result.Result.TbV"><code class="xref py py-meth docutils literal"><span class="pre">Result.TbV()</span></code></a> and <a class="reference internal" href="#smrt.core.result.Result.TbH" title="smrt.core.result.Result.TbH"><code class="xref py py-meth docutils literal"><span class="pre">Result.TbH()</span></code></a> for the passive mode calculations and
+<a class="reference internal" href="#smrt.core.result.Result.sigmaHH" title="smrt.core.result.Result.sigmaHH"><code class="xref py py-meth docutils literal"><span class="pre">Result.sigmaHH()</span></code></a> and <a class="reference internal" href="#smrt.core.result.Result.sigmaVV" title="smrt.core.result.Result.sigmaVV"><code class="xref py py-meth docutils literal"><span class="pre">Result.sigmaVV()</span></code></a>. Other methods could be developed for specific needs.</p>
+<p>To save results of calculations in a file, simply use the pickle module or other serialization schemes. We may provide a unified and inter-operable solution in the future.</p>
+<p>Under the hood, <a class="reference internal" href="#smrt.core.result.Result" title="smrt.core.result.Result"><code class="xref py py-class docutils literal"><span class="pre">Result</span></code></a> uses xarray module which provides multi-dimensional array with explicit, named, dimensions. Here the common dimensions
+are frequency, polarization, polarization_inc, theta_inc, theta, and phi. They are created by the RT Solver. The interest of using named dimension is that slice of the xarray (i.e. results)
+can be selected based on the dimension name whereas with numpy the order of the dimensions matters. Because this is very convenient, users may be
+interested in adding other dimensions specific to their context such as time, longitude, latitude, points, ... To do so, <a class="reference internal" href="smrt.core.model.html#smrt.core.model.Model.run" title="smrt.core.model.Model.run"><code class="xref py py-meth docutils literal"><span class="pre">smrt.core.model.Model.run()</span></code></a> accepts a list of snowpack
+and optionally the parameter <cite>snowpack_dimension</cite> is used to specify the name and values of the new dimension to build.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">,</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="n">snowpacks</span> <span class="o">=</span> <span class="p">[</span><span class="n">snowpack_1jan</span><span class="p">,</span> <span class="n">snowpack_5jan</span><span class="p">,</span> <span class="n">snowpack_10jan</span><span class="p">]</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sensor</span><span class="p">,</span> <span class="n">snowpacks</span><span class="p">,</span> <span class="n">snowpack_dimension</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">times</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The <cite>res</cite> variable is a <a class="reference internal" href="#smrt.core.result.Result" title="smrt.core.result.Result"><code class="xref py py-class docutils literal"><span class="pre">Result</span></code></a> instance, so that for all the methods of this class that can be called, they will return a timeseries.
+For instance result.TbV(theta=53) returns a time-series of brightness temperature at V polarization and 53° incidence angle and the following code
+plots this timeseries:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">TbV</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">53</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="smrt.core.result.Result">
+<em class="property">class </em><code class="descname">Result</code><span class="sig-paren">(</span><em>intensity</em>, <em>coords=None</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.result.Result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Contains the results of a/many computations and provides convenience functions to access these results</p>
+<dl class="attribute">
+<dt id="smrt.core.result.Result.coords">
+<code class="descname">coords</code><a class="headerlink" href="#smrt.core.result.Result.coords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="smrt.core.result.Result.TbV">
+<code class="descname">TbV</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.result.Result.TbV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return V polarization. Any parameter can be added to slice the results (e.g. frequency=37e9). See xarray slicing with sel method (to document)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.core.result.Result.TbH">
+<code class="descname">TbH</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.result.Result.TbH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return H polarization. Any parameter can be added to slice the results (e.g. frequency=37e9). See xarray slicing with sel method (to document)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.core.result.Result.polarization_ratio">
+<code class="descname">polarization_ratio</code><span class="sig-paren">(</span><em>ratio='H_V'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.result.Result.polarization_ratio" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return polarization ratio. Any parameter can be added to slice the results (e.g. frequency=37e9). See xarray slicing with sel method (to document)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.core.result.Result.sigmaVV">
+<code class="descname">sigmaVV</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.result.Result.sigmaVV" title="Permalink to this definition">¶</a></dt>
+<dd><p>any parameter can be added to slice the results (e.g. frequency=37e9). See xarray slicing with sel method (to document)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.core.result.Result.sigmaHH">
+<code class="descname">sigmaHH</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.result.Result.sigmaHH" title="Permalink to this definition">¶</a></dt>
+<dd><p>any parameter can be added to slice the results (e.g. frequency=37e9). See xarray slicing with sel method (to document)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.core.result.Result.sigmaHV">
+<code class="descname">sigmaHV</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.result.Result.sigmaHV" title="Permalink to this definition">¶</a></dt>
+<dd><p>any parameter can be added to slice the results (e.g. frequency=37e9). See xarray slicing with sel method (to document)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.core.result.Result.sigmaVH">
+<code class="descname">sigmaVH</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.result.Result.sigmaVH" title="Permalink to this definition">¶</a></dt>
+<dd><p>any parameter can be added to slice the results (e.g. frequency=37e9). See xarray slicing with sel method (to document)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="smrt.core.result.concat_results">
+<code class="descname">concat_results</code><span class="sig-paren">(</span><em>result_list</em>, <em>coord</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.result.concat_results" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenate several results from <a class="reference internal" href="smrt.core.model.html#smrt.core.model.Model.run" title="smrt.core.model.Model.run"><code class="xref py py-meth docutils literal"><span class="pre">smrt.core.model.Model.run()</span></code></a> (of type <a class="reference internal" href="#smrt.core.result.Result" title="smrt.core.result.Result"><code class="xref py py-class docutils literal"><span class="pre">Result</span></code></a>) into a single result (of type <a class="reference internal" href="#smrt.core.result.Result" title="smrt.core.result.Result"><code class="xref py py-class docutils literal"><span class="pre">Result</span></code></a>). This extends
+the number of dimension in the xarray hold by the instance. The new dimension is specified with coord</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>result_list</strong> &#8211; list of results returned by <a class="reference internal" href="smrt.core.model.html#smrt.core.model.Model.run" title="smrt.core.model.Model.run"><code class="xref py py-meth docutils literal"><span class="pre">smrt.core.model.Model.run()</span></code></a> or other functions.</li>
+<li><strong>coord</strong> &#8211; a tuple (dimension_name, dimension_values) for the new dimension. Dimension_values must be a sequence or array with the same length as result_list.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#smrt.core.result.Result" title="smrt.core.result.Result"><code class="xref py py-class docutils literal"><span class="pre">Result</span></code></a> instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.core.result.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

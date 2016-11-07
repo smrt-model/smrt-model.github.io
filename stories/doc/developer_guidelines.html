@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Guidelines for Developers &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="prev" title="smrt.utils.repo_tools module" href="smrt.utils.repo_tools.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="smrt.utils.repo_tools.html" title="previous chapter">smrt.utils.repo_tools module</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="guidelines-for-developers">
+<h1>Guidelines for Developers<a class="headerlink" href="#guidelines-for-developers" title="Permalink to this headline">¶</a></h1>
+<p>At the moment this is an organic document to collect all the model design and developer style decisions. This will also
+include information on how to get started with useful developer tools. At the moment, it contains personal experience of installing and using these tools although these may be removed if they do not appear to be useful to others.</p>
+<p>These guidelines will be turned into a formal document towards the end of the project.</p>
+<div class="section" id="use-of-import-statements">
+<h2>Use of import statements<a class="headerlink" href="#use-of-import-statements" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://stackoverflow.com/questions/193919/what-are-good-rules-of-thumb-for-python-imports">Good rules for python imports</a></p>
+<p>In short:</p>
+<ul class="simple">
+<li>use fully qualified names</li>
+<li><code class="code docutils literal"><span class="pre">from</span> <span class="pre">blabla</span> <span class="pre">import</span> <span class="pre">*</span></code> should never be used.</li>
+<li><code class="code docutils literal"><span class="pre">from</span> <span class="pre">blabla</span> <span class="pre">import</span> <span class="pre">passive</span></code> should be avoided in SMRT but can be used in user code.</li>
+<li>keep at least the module e.g. &#8220;from smrt import sensor_list&#8221; is the best compromise.</li>
+<li>use &#8220;as&#8221; with moderation and everyone should agree to use it.</li>
+<li>but <code class="code docutils literal"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> is good.</li>
+<li>to start, we will use an explicit import at the top of the driver file, making the code more cumbersome, but may later consider a plugin framework to do the import and introspection in a nice way.</li>
+</ul>
+<p>Note: it&#8217;s part of the Google Python style guides that
+all imports must import a module, not a class or function from that
+module. There are way more classes and functions than there are modules,
+so recalling where a particular thing comes from is much easier if it is
+prefixed with a module name. Often multiple modules happen to define
+things with the same name &#8211; so a reader of the code doesn&#8217;t have to go
+back to the top of the file to see from which module a given name is
+imported.</p>
+</div>
+<div class="section" id="python">
+<h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<p>Python was chosen because of its growing use in the scientific community and higher flexibility than compiled legacy languages like FORTRAN. This enables the model to be modular much more easily, which is a main constraint of the project,  allows faster development and an easier exploration of new ideas. The performance should not be an issue as the time consuming part of the model should be localized in the RT solver and numerical integrations which uses the highly optimized scipy module facility that basically uses BLAS, LAPACK and MINPACK libraries as would be done in FORTRAN. Compilation of the Python code with Numba or Pypy will be considered in case of performance issues later in the project or even more probably after. Parallelization could be done later e.g. through joblib module.</p>
+<p>The model in the framework of the current project mainly aims at exploring new ideas involving the microstructure and tests various modelling solutions. It is quite likely that operational needs (especially very intensive ones) will require rewritting a selected subset of the model.</p>
+<div class="section" id="python-versions">
+<h3>Python versions<a class="headerlink" href="#python-versions" title="Permalink to this headline">¶</a></h3>
+<p>The target version is Python 3.4+ which is better optimized and is the only supported version in the future (after 2020) with the use of a subset syntax to ensure compatibility with the lastest 2.7.x and PyPy. It means in practice that the model will be compatible with the last 2.7.x version but is “ready” for Python 3 and later. For this  &#8220;__future__&#8221; directives and six module will be used. The tests must pass the two versions. This choice is overall a weak constraint for developers and big asset for users.</p>
+<p>Anaconda is probably the easiest way to install python, especially when several versions are needed. See also <a class="reference external" href="http://stackoverflow.com/questions/2547554/official-multiple-python-versions-on-the-same-machine">Installing multiple versions of python</a> is system dependent and also <a class="reference external" href="http://stackoverflow.com/questions/2812520/pip-dealing-with-multiple-python-versions">depends on your preferred install method</a>.</p>
+<p>Perhaps it&#8217;s not strictly necessary to follow all steps, but I followed these <a class="reference external" href="https://iainhunter.wordpress.com/2012/11/08/howto-install-python3-pip3-tornado-on-mac/">instructions for Mac OSX</a> to install python 3.5. Then <code class="docutils literal"><span class="pre">pip</span></code> installs
+packages into python 2.7 and <code class="docutils literal"><span class="pre">pip3</span></code> installs packages into python 3.5. <a class="reference external" href="https://www.python.org/download/mac/tcltk/">Note on Tcl/Tk for Mac OSX</a>. I have installed ActiveTcl 8.6.4 and am keeping my fingers crossed that these changes have not broken anything...I have subsequently installed python 3.4.3. This means that <code class="docutils literal"><span class="pre">python3</span></code> will run version 3.4.3 by default. It doesn&#8217;t seem trivial to get <code class="docutils literal"><span class="pre">python3</span></code> to point back to python 3.5, but that&#8217;s probably ok as the target version is 3.4, and it will be worth testing for 3.5 alongside.</p>
+</div>
+<div class="section" id="tox-testing-multiple-python-versions">
+<h3>tox: testing multiple python versions<a class="headerlink" href="#tox-testing-multiple-python-versions" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://tox.readthedocs.org/en/latest/">The tox package</a> allows multiple versions of python to be tested. Although not clear whether this needs to be installed in python 2 or 3, I installed with <code class="docutils literal"><span class="pre">pip</span></code> rather than <code class="docutils literal"><span class="pre">pip3</span></code> and trust that it will take care of everything. This seems to work fine.</p>
+<p>The setup to run tox is contained in the tox.ini file. At the moment this is setup for nosetests against python versions 2.7, 3.4 and 3.5. Also, at present <a class="reference external" href="http://stackoverflow.com/questions/18962403/how-do-i-run-tox-in-a-project-that-has-no-setup-py">tox.ini does not require a setup.py to run</a>. Once the model is fully operational the line <code class="docutils literal"><span class="pre">skipsdist</span> <span class="pre">=</span> <span class="pre">True</span></code> should be deleted, or this parameter set to False. Note that all modules to be imported need to be listed in the dependencies (deps) in the tox.ini file. An ImportError may indicate that the module it is trying to import has not been included in the tox.ini.</p>
+<p>To run the nosetests for all the different versions, using the installed tox package, simply type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tox</span>
+</pre></div>
+</div>
+<p>If you want to test for only one python version, type e.g:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tox</span> <span class="o">-</span><span class="n">e</span> <span class="n">py27</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="setup-py">
+<h2>setup.py<a class="headerlink" href="#setup-py" title="Permalink to this headline">¶</a></h2>
+<p>This is needed in order to build, install and distribute the model through Distutils (<a class="reference external" href="https://docs.python.org/2/distutils/setupscript.html">instructions</a>). To be done for the public release.</p>
+</div>
+<div class="section" id="bug-correction">
+<h2>bug correction<a class="headerlink" href="#bug-correction" title="Permalink to this headline">¶</a></h2>
+<p>Every bug should result in writing a test.</p>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<p>If the compulsary argument list becomes too long (say 4?), use optional arguments to make things easier to read.</p>
+<p><a class="reference external" href="http://programmers.stackexchange.com/questions/145055/are-there-guidelines-on-how-many-parameters-a-function-should-accept">Guidelines on number of parameters a function should take</a>.</p>
+<p><a class="reference external" href="http://byatool.com/lessons/simple-property-merge-for-python-objects/">Merge two objects in python</a>.</p>
+</div>
+<div class="section" id="pep008">
+<h2>PEP008<a class="headerlink" href="#pep008" title="Permalink to this headline">¶</a></h2>
+<p>Code must conform to <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a> - with the exception that lines of up to 140 characters are allowed and extra space are allowed in long formula for readability. Particular points of note:</p>
+<ul class="simple">
+<li>4 spaces for the indentation.</li>
+<li>one space after comma and around operators.</li>
+<li>all names (variable, function, …) are meaningful. Abbreviations are used in a very limited number of cases.</li>
+<li>function names are lowercase only and word a spaced by underscore.</li>
+<li>Constants are usually defined on a module level and written in all capital letters with underscores separating words</li>
+</ul>
+<p>You can check for PEP8 compliance automatically with nosetests. To do this, install <a class="reference external" href="https://code.activestate.com/pypm/tissue/">tissue</a> and pep8. Then type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nosetests</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">tissue</span> <span class="o">--</span><span class="n">tissue</span><span class="o">-</span><span class="n">ignore</span><span class="o">=</span><span class="n">E501</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nosetests</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">tissue</span> <span class="o">--</span><span class="n">tissue</span><span class="o">-</span><span class="n">ignore</span><span class="o">=</span><span class="n">E501</span> <span class="o">**</span><span class="n">specific</span> <span class="n">filename</span><span class="o">**</span>
+</pre></div>
+</div>
+<p>to run nosetests with the pep8 checks. As we have allowed 140 characters per line, the E501 longer line warning needs to be suppressed.</p>
+</div>
+<div class="section" id="sphinx">
+<h2>Sphinx<a class="headerlink" href="#sphinx" title="Permalink to this headline">¶</a></h2>
+<p>Documentation is done in-code, and is automatically generated with <a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>. If no new modules are added, generate the rst and html documentation from the in-code Sphinx comments, by typing (whilst in smrt/doc directory):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">fullhtml</span>
+</pre></div>
+</div>
+<p>The documentation can be accessed via the index.html page in the smrt/doc/build/html folder.</p>
+<p>If you have math symbols to be displayed, this can be done with the imgmath extension (already used), which generates a png and inserts the image at the appropriate place. You may need to set the path to latex and dvipng on your system. From the source directory, this can be done with e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="o">-</span><span class="n">b</span> <span class="n">html</span> <span class="o">-</span><span class="n">D</span> <span class="n">imgmath_latex</span><span class="o">=/</span><span class="n">sw</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">latex</span> <span class="o">-</span><span class="n">D</span> <span class="n">imgmath_dvipng</span><span class="o">=/</span><span class="n">sw</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">dvipng</span> <span class="o">.</span> <span class="o">../</span><span class="n">build</span><span class="o">/</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>or to continue to use :<code class="code docutils literal"><span class="pre">make</span> <span class="pre">html</span></code> or <code class="code docutils literal"><span class="pre">make</span> <span class="pre">fullhtml</span></code>, by setting your path (C-shell) e.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>set path = ($path /sw/bin)
+</pre></div>
+</div>
+<p>or bash:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>PATH=$PATH:/sw/bin
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Math symbols will need double backslashes in place of the single backslash used in latex.</p>
+</div>
+<p>To generate a list of undocumented elements, whilst in the <em>source</em> directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sphinx</span><span class="o">-</span><span class="n">build</span> <span class="o">-</span><span class="n">b</span> <span class="n">coverage</span> <span class="o">.</span> <span class="n">coverage</span>
+</pre></div>
+</div>
+<p>The files will be listed in the <em>coverage/python.txt</em> file</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/developer_guidelines.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

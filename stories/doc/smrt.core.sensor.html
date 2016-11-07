@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.core.sensor module &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="up" title="smrt.core package" href="smrt.core.html" />
+    <link rel="next" title="smrt.core.snowpack module" href="smrt.core.snowpack.html" />
+    <link rel="prev" title="smrt.core.result module" href="smrt.core.result.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="smrt.core.html">smrt.core package</a><ul>
+      <li>Previous: <a href="smrt.core.result.html" title="previous chapter">smrt.core.result module</a></li>
+      <li>Next: <a href="smrt.core.snowpack.html" title="next chapter">smrt.core.snowpack module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.core.sensor">
+<span id="smrt-core-sensor-module"></span><h1>smrt.core.sensor module<a class="headerlink" href="#module-smrt.core.sensor" title="Permalink to this headline">¶</a></h1>
+<p>The sensor configuration includes all the information describing the sensor viewing geometry (incidence, ...) 
+and operating parameters (frequency, polarization, ...). The easiest and recommended way to create a <a class="reference internal" href="#smrt.core.sensor.Sensor" title="smrt.core.sensor.Sensor"><code class="xref py py-class docutils literal"><span class="pre">Sensor</span></code></a> instance is 
+to use one of the convenience functions such as <a class="reference internal" href="smrt.inputs.sensor_list.html#smrt.inputs.sensor_list.passive" title="smrt.inputs.sensor_list.passive"><code class="xref py py-func docutils literal"><span class="pre">passive()</span></code></a>, <a class="reference internal" href="smrt.inputs.sensor_list.html#smrt.inputs.sensor_list.active" title="smrt.inputs.sensor_list.active"><code class="xref py py-func docutils literal"><span class="pre">active()</span></code></a>, <a class="reference internal" href="smrt.inputs.sensor_list.html#smrt.inputs.sensor_list.amsre" title="smrt.inputs.sensor_list.amsre"><code class="xref py py-func docutils literal"><span class="pre">amsre()</span></code></a>, etc.
+Adding a function for a new or unlisted sensor can be done in <a class="reference internal" href="smrt.inputs.sensor_list.html#module-smrt.inputs.sensor_list" title="smrt.inputs.sensor_list"><code class="xref py py-mod docutils literal"><span class="pre">sensor_list</span></code></a> if the sensor is common and of general interest.
+Otherwise, we recommend to add these functions in your own files (outside of smrt directories).</p>
+<dl class="function">
+<dt id="smrt.core.sensor.passive">
+<code class="descname">passive</code><span class="sig-paren">(</span><em>frequency</em>, <em>theta</em>, <em>polarization=None</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.sensor.passive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic configuration for passive microwave sensor.</p>
+<p>Return a <a class="reference internal" href="#smrt.core.sensor.Sensor" title="smrt.core.sensor.Sensor"><code class="xref py py-class docutils literal"><span class="pre">Sensor</span></code></a> for a microwave radiometer with given frequency, incidence angle and polarization</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>frequency</strong> &#8211; frequency in Hz</li>
+<li><strong>theta</strong> &#8211; viewing angle or list of viewing angles in degrees from vertical. Note that some RT solvers compute all viewing angles whatever this configuration because it is internally needed part of the multiple scattering calculation. It it therefore often more efficient to call the model once with many viewing angles instead of calling it many times with a single angle.</li>
+<li><strong>polarization</strong> (<em>list of characters</em>) &#8211; H and/or V polarizations. Both polarizations is the default. Note that most RT solvers compute all the polarizations whatever this configuration because the polarizations are coupled in the RT equation.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#smrt.core.sensor.Sensor" title="smrt.core.sensor.Sensor"><code class="xref py py-class docutils literal"><span class="pre">Sensor</span></code></a> instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage example:</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">smrt</span> <span class="k">import</span> <span class="n">sensor</span>
+<span class="n">radiometer</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">passive</span><span class="p">(</span><span class="mi">18</span><span class="n">e9</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">radiometer</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">passive</span><span class="p">(</span><span class="mi">18</span><span class="n">e9</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">)</span>
+<span class="n">radiometer</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">passive</span><span class="p">([</span><span class="mi">18</span><span class="n">e9</span><span class="p">,</span><span class="mf">36.5e9</span><span class="p">],</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">55</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;V&quot;</span><span class="p">,</span><span class="s2">&quot;H&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="smrt.core.sensor.active">
+<code class="descname">active</code><span class="sig-paren">(</span><em>frequency</em>, <em>theta_inc</em>, <em>theta=None</em>, <em>phi=None</em>, <em>polarization_inc=None</em>, <em>polarization=None</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.sensor.active" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configuration for active microwave sensor.</p>
+<p>Return a <a class="reference internal" href="#smrt.core.sensor.Sensor" title="smrt.core.sensor.Sensor"><code class="xref py py-class docutils literal"><span class="pre">Sensor</span></code></a> for a radar with given frequency, incidence and viewing angles and polarization</p>
+<p>If polarizations are not specified, quad-pol is the default (VV, VH, HV and HH).
+If the angle of incident radiation is not specified, <em>backscatter</em> will be simulated</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>frequency</strong> &#8211; frequency in Hz</li>
+<li><strong>theta_inc</strong> &#8211; incident angle in degrees from the vertical</li>
+<li><strong>theta</strong> &#8211; viewing zenith angle in degrees from the vertical. By default, it is equal to theta_inc which corresponds to the backscatter direction</li>
+<li><strong>phi</strong> &#8211; viewing azimuth angle in degrees from the incident direction. By default, it is pi which corresponds to the backscatter direction</li>
+<li><strong>polarization_inc</strong> (<em>list of 1-character strings</em>) &#8211; list of polarizations of the incidence wave (&#8216;H&#8217; or &#8216;V&#8217; or both.)</li>
+<li><strong>polarization</strong> (<em>list of 1-character strings</em>) &#8211; list of viewing polarizations (&#8216;H&#8217; or &#8216;V&#8217; or both)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#smrt.core.sensor.Sensor" title="smrt.core.sensor.Sensor"><code class="xref py py-class docutils literal"><span class="pre">Sensor</span></code></a> instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage example:</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">smrt</span> <span class="k">import</span> <span class="n">sensor</span>
+<span class="n">scatterometer</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="n">frequency</span><span class="o">=</span><span class="mi">18</span><span class="n">e9</span><span class="p">,</span> <span class="n">theta_inc</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">scatterometer</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="mi">18</span><span class="n">e9</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">)</span>
+<span class="n">scatterometer</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">active</span><span class="p">([</span><span class="mi">18</span><span class="n">e9</span><span class="p">,</span><span class="mf">36.5e9</span><span class="p">],</span> <span class="n">theta</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">theta_inc</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">polarization_inc</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;V&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">],</span> <span class="n">polarization</span><span class="p">[</span><span class="s2">&quot;V&quot;</span><span class="p">,</span> <span class="s2">&quot;H&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="smrt.core.sensor.Sensor">
+<em class="property">class </em><code class="descname">Sensor</code><span class="sig-paren">(</span><em>frequency</em>, <em>theta_inc</em>, <em>theta</em>, <em>phi</em>, <em>polarization_inc</em>, <em>polarization</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.sensor.Sensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Configuration for sensor.
+Use of the functions <a class="reference internal" href="#smrt.core.sensor.passive" title="smrt.core.sensor.passive"><code class="xref py py-func docutils literal"><span class="pre">passive()</span></code></a>, <a class="reference internal" href="#smrt.core.sensor.active" title="smrt.core.sensor.active"><code class="xref py py-func docutils literal"><span class="pre">active()</span></code></a>, or the sensor specific functions
+e.g. <code class="xref py py-func docutils literal"><span class="pre">amsre()</span></code> are recommended to access this class.</p>
+<dl class="attribute">
+<dt id="smrt.core.sensor.Sensor.mode">
+<code class="descname">mode</code><a class="headerlink" href="#smrt.core.sensor.Sensor.mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns the mode of observation: &#8220;A&#8221; for active or &#8220;P&#8221; for passive.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.core.sensor.Sensor.basic_checks">
+<code class="descname">basic_checks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.sensor.Sensor.basic_checks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.core.sensor.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

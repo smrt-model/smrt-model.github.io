@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.microstructure_model package &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="next" title="smrt.microstructure_model.autocorrelation module" href="smrt.microstructure_model.autocorrelation.html" />
+    <link rel="prev" title="smrt.permittivity.ice module" href="smrt.permittivity.ice.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="smrt.permittivity.ice.html" title="previous chapter">smrt.permittivity.ice module</a></li>
+      <li>Next: <a href="smrt.microstructure_model.autocorrelation.html" title="next chapter">smrt.microstructure_model.autocorrelation module</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.microstructure_model">
+<span id="smrt-microstructure-model-package"></span><h1>smrt.microstructure_model package<a class="headerlink" href="#module-smrt.microstructure_model" title="Permalink to this headline">¶</a></h1>
+<p>Microstructure models are different representations of the snow microstructure. Because these representations are different, the
+parameters to describe actual snow micro-structure depends on the model. For instance, the Sticky Hard Spheres medium is implemented
+in <a class="reference internal" href="smrt.microstructure_model.sticky_hard_spheres.html#module-smrt.microstructure_model.sticky_hard_spheres" title="smrt.microstructure_model.sticky_hard_spheres"><code class="xref py py-mod docutils literal"><span class="pre">sticky_hard_spheres</span></code></a> and its parameters are: the <cite>radius</cite> (required) and
+the <cite>stickiness</cite> (optional, default value is non-sticky, even though we do recommend to use a stickiness of ~0.1-0.3 in practice).</p>
+<p>Because IBA is one of the important electromagnetic theories provided by SMRT, the first/main role of microstructure models is to provide
+the Fourier transform of the autocorrelation functions. Hence most microstructure models are named after the autocorrelation function.
+For instance, the <a class="reference internal" href="smrt.microstructure_model.exponential.html#module-smrt.microstructure_model.exponential" title="smrt.microstructure_model.exponential"><code class="xref py py-mod docutils literal"><span class="pre">exponential</span></code></a> autocorrelation function is that used in MEMLS. Its only parameter is the 
+<cite>corr_length</cite>.</p>
+<p>To use microstructure models, it is only required to read the documentation of each model to determine
+the required and optional parameters. Selecting the microstructure model is usually done with make_snowpack which only requires the name of the
+module (the filename with .py). The import of the module is automatic. For instance:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">smrt</span> <span class="k">import</span> <span class="n">make_snowpack</span>
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">make_snowpack</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">],</span> <span class="s2">&quot;exponential&quot;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">],</span> <span class="n">corr_length</span><span class="o">=</span><span class="p">[</span><span class="mf">0.2e-3</span><span class="p">,</span> <span class="mf">0.5e-3</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This snippet creates a snowpack with the exponential autocorrelation function for all (2) layers. Import of the <a class="reference internal" href="smrt.microstructure_model.exponential.html#module-smrt.microstructure_model.exponential" title="smrt.microstructure_model.exponential"><code class="xref py py-mod docutils literal"><span class="pre">exponential</span></code></a>
+is automatic and creation of instance of the class <a class="reference internal" href="smrt.microstructure_model.exponential.html#smrt.microstructure_model.exponential.Exponential" title="smrt.microstructure_model.exponential.Exponential"><code class="xref py py-mod docutils literal"><span class="pre">Exponential</span></code></a> is done by the model
+<a class="reference internal" href="smrt.core.model.html#smrt.core.model.Model.run" title="smrt.core.model.Model.run"><code class="xref py py-meth docutils literal"><span class="pre">smrt.core.model.Model.run()</span></code></a> method.</p>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.autocorrelation.html">smrt.microstructure_model.autocorrelation module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.exponential.html">smrt.microstructure_model.exponential module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.gaussian_random_field.html">smrt.microstructure_model.gaussian_random_field module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.independent_sphere.html">smrt.microstructure_model.independent_sphere module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.sampled_autocorrelation.html">smrt.microstructure_model.sampled_autocorrelation module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.sticky_hard_spheres.html">smrt.microstructure_model.sticky_hard_spheres module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.teubner_strey.html">smrt.microstructure_model.teubner_strey module</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.microstructure_model.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

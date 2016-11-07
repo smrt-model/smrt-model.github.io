@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.emmodel.dmrt_shortrange module &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="up" title="smrt.emmodel package" href="smrt.emmodel.html" />
+    <link rel="next" title="smrt.emmodel.iba module" href="smrt.emmodel.iba.html" />
+    <link rel="prev" title="smrt.emmodel.commonfunc module" href="smrt.emmodel.commonfunc.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="smrt.emmodel.html">smrt.emmodel package</a><ul>
+      <li>Previous: <a href="smrt.emmodel.commonfunc.html" title="previous chapter">smrt.emmodel.commonfunc module</a></li>
+      <li>Next: <a href="smrt.emmodel.iba.html" title="next chapter">smrt.emmodel.iba module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.emmodel.dmrt_shortrange">
+<span id="smrt-emmodel-dmrt-shortrange-module"></span><h1>smrt.emmodel.dmrt_shortrange module<a class="headerlink" href="#module-smrt.emmodel.dmrt_shortrange" title="Permalink to this headline">¶</a></h1>
+<p>Compute scattering with DMRT Short range like in DMRT-ML. Short range means that it is accurate only for small
+and weakly sticky spheres (high stickiness value). It diverges (increasing scattering coefficient) if these conditions
+are not met. Numerically the size conditions can be evaluated with the ratio radius/wavelength as for Rayleigh scatterers.
+For the stickiness, it is more difficult as this depends on the size of the scatterers and the fractional volume. In any case, it is
+dangerous to use too small a stickiness value, especially if the grains are big.</p>
+<p>This model is only compatible with the SHS microstructure model.</p>
+<p>Examples:</p>
+<blockquote>
+<div><p>from smrt import make_snowpack, make_sensor</p>
+<p>density = [345.0]
+temperature = [260.0]
+thickness = [70]
+radius = [750e-6]
+stickiness = [0.1]</p>
+<dl class="docutils">
+<dt>snowpack = make_snowpack(thickness, &#8220;sticky_hard_spheres&#8221;,</dt>
+<dd>density=density, temperature=temperature, radius=radius, stickiness=stickiness)</dd>
+</dl>
+<p># create the EM Model - Equivalent DMRTML
+m = make_model(&#8220;dmrt_shortrange&#8221;, &#8220;dort&#8221;)</p>
+<p># create the sensor
+theta = np.arange(5.0, 80.0, 5.0)
+radiometer = sensor.amsre()</p>
+</div></blockquote>
+<dl class="class">
+<dt id="smrt.emmodel.dmrt_shortrange.DMRT_ShortRange">
+<em class="property">class </em><code class="descname">DMRT_ShortRange</code><span class="sig-paren">(</span><em>sensor</em>, <em>layer</em>, <em>dense_snow_correction='auto'</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.dmrt_shortrange.DMRT_ShortRange" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="smrt.emmodel.rayleigh.html#smrt.emmodel.rayleigh.Rayleigh" title="smrt.emmodel.rayleigh.Rayleigh"><code class="xref py py-class docutils literal"><span class="pre">smrt.emmodel.rayleigh.Rayleigh</span></code></a></p>
+<p>DMRT electromagnetic model in the short range limit (grains AND aggregates are small) as implemented in DMRTML</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sensor</strong> &#8211; sensor instance</li>
+<li><strong>layer</strong> &#8211; layer instance</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">Dense_snow_correction:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body"><p class="first last">set how snow denser than half the ice density (ie. fractional volume larger than 0.5 is handled).</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&#8220;auto&#8221; means that snow is modeled as air bubble in ice instead of ice spheres in air.
+&#8220;bridging&#8221; should be developed in the future.</p>
+<dl class="method">
+<dt id="smrt.emmodel.dmrt_shortrange.DMRT_ShortRange.basic_check">
+<code class="descname">basic_check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#smrt.emmodel.dmrt_shortrange.DMRT_ShortRange.basic_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.emmodel.dmrt_shortrange.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

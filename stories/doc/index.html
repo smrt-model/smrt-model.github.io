@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SMRT Documentation &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="#" />
+    <link rel="next" title="smrt.inputs package" href="smrt.inputs.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="#">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="smrt.inputs.html" title="next chapter">smrt.inputs package</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="smrt-documentation">
+<h1>SMRT Documentation<a class="headerlink" href="#smrt-documentation" title="Permalink to this headline">¶</a></h1>
+<p>The SMRT API documentation describes the structure of the package and modules and provides detailed information on the classes and functions. It is not a practical guide for beginners to learn SMRT even though a few examples are sometimes given. We recommend to first read the tutorials &lt;link here&gt; and then use this API documentation as a further step to exploit SMRT in depth. SMRT extensively uses default/optional arguments in functions to provide a simple yet extendable interface. The API documentation is the only valid/up-to-date reference for these default behaviours as it is auto-generated from source. For developers who want to implement new behaviour in SMRT for their own use or for improving SMRT, we recomend to read the developer guidelines &lt;link here&gt; and to contact the authors of the model to discuss about the best/most generic approach to solve your problem. More documentation for improving SMRT will be prepared in the future.</p>
+<p>The following package describes all the packages available in SMRT. The <a class="reference internal" href="smrt.inputs.html#module-smrt.inputs" title="smrt.inputs"><code class="xref py py-mod docutils literal"><span class="pre">inputs</span></code></a> package includes the functions to build the medium and the sensor configuration, it will include in the future any useful functions for inputs from various sources (text file, snowpack model simulations, etc). The <a class="reference internal" href="smrt.permittivity.html#module-smrt.permittivity" title="smrt.permittivity"><code class="xref py py-mod docutils literal"><span class="pre">permittivity</span></code></a> package provides formulae to compute the permittivity of raw materials such as ice. The <a class="reference internal" href="smrt.microstructure_model.html#module-smrt.microstructure_model" title="smrt.microstructure_model"><code class="xref py py-mod docutils literal"><span class="pre">microstructure_model</span></code></a> package includes all the representations of the snow micro-structure available. It provides information on the required and optional parameters of each microstrcuture_model. <a class="reference internal" href="smrt.interface.html#module-smrt.interface" title="smrt.interface"><code class="xref py py-mod docutils literal"><span class="pre">interface</span></code></a> provides the formulation for different types of inter-layer interfaces (such as flat, rugged in the future).</p>
+<p>The <a class="reference internal" href="smrt.substrate.html#module-smrt.substrate" title="smrt.substrate"><code class="xref py py-mod docutils literal"><span class="pre">substrate</span></code></a> package and <a class="reference internal" href="smrt.atmosphere.html#module-smrt.atmosphere" title="smrt.atmosphere"><code class="xref py py-mod docutils literal"><span class="pre">atmosphere</span></code></a> packages provide the lower and upper boundary conditions of the radiative transfer. Substrate can represent the soil, ice, ocean.
+It is worth noting that these modules describe the half-space semi-infinite media under and above the snowpack. It means they have uniform properties and especially temperature which is common practice when the focus is on the snowpack. However, for a proper fully coupled multi-layered soil-snow-atmosphere radiative transfer model, it would be necessary to describe the soil and the atmosphere as layers (exactly as the snowpack is made of snow layers) and to implement <a class="reference internal" href="smrt.emmodel.html#module-smrt.emmodel" title="smrt.emmodel"><code class="xref py py-mod docutils literal"><span class="pre">emmodel</span></code></a> adequately to the soil and atmosphere.</p>
+<p>The <a class="reference internal" href="smrt.emmodel.html#module-smrt.emmodel" title="smrt.emmodel"><code class="xref py py-mod docutils literal"><span class="pre">emmodel</span></code></a> package includes all the scattering theories available in SMRT (iba, dmrt, independent spheres (Rayleigh), ...). In some case there is an inter-dependence between the choices of micro-structure and of electromagnetic theory. For instance, <a class="reference internal" href="smrt.emmodel.dmrt_shortrange.html#module-smrt.emmodel.dmrt_shortrange" title="smrt.emmodel.dmrt_shortrange"><code class="xref py py-mod docutils literal"><span class="pre">dmrt_shortrange</span></code></a> only works with <a class="reference internal" href="smrt.microstructure_model.sticky_hard_spheres.html#module-smrt.microstructure_model.sticky_hard_spheres" title="smrt.microstructure_model.sticky_hard_spheres"><code class="xref py py-mod docutils literal"><span class="pre">sticky_hard_spheres</span></code></a> microstructure (this is inherent to theory) and <a class="reference internal" href="smrt.emmodel.rayleigh.html#module-smrt.emmodel.rayleigh" title="smrt.emmodel.rayleigh"><code class="xref py py-mod docutils literal"><span class="pre">rayleigh</span></code></a> would work with any microstructure model based on spheres (ie. that defines a <cite>radius</cite> parameter).</p>
+<p>The <a class="reference internal" href="smrt.rtsolver.html#module-smrt.rtsolver" title="smrt.rtsolver"><code class="xref py py-mod docutils literal"><span class="pre">rtsolver</span></code></a> package includes the numerical codes that solves the radiative transfer equation.</p>
+<p>The <a class="reference internal" href="smrt.core.html#module-smrt.core" title="smrt.core"><code class="xref py py-mod docutils literal"><span class="pre">core</span></code></a> package is where the SMRT machinery is implemented and especially the most important objects
+<a class="reference internal" href="smrt.core.sensor.html#smrt.core.sensor.Sensor" title="smrt.core.sensor.Sensor"><code class="xref py py-class docutils literal"><span class="pre">Sensor</span></code></a>, <a class="reference internal" href="smrt.core.layer.html#smrt.core.layer.Layer" title="smrt.core.layer.Layer"><code class="xref py py-class docutils literal"><span class="pre">Layer</span></code></a>, <a class="reference internal" href="smrt.core.snowpack.html#smrt.core.snowpack.Snowpack" title="smrt.core.snowpack.Snowpack"><code class="xref py py-class docutils literal"><span class="pre">Snowpack</span></code></a>, <a class="reference internal" href="smrt.core.model.html#smrt.core.model.Model" title="smrt.core.model.Model"><code class="xref py py-class docutils literal"><span class="pre">Model</span></code></a>, etc. It may be useful to understand how these objects work but it is not necessary as most of them (all) are created by helper functions which are much more convenient to use than class constructors. The only exception, which is worth exploring a bit, is <a class="reference internal" href="smrt.core.result.html#smrt.core.result.Result" title="smrt.core.result.Result"><code class="xref py py-class docutils literal"><span class="pre">Result</span></code></a>. It provides useful methods to extract the result of the radiative calculation.
+In general, it is not recommended to modify/extend <a class="reference internal" href="smrt.core.html#module-smrt.core" title="smrt.core"><code class="xref py py-mod docutils literal"><span class="pre">core</span></code></a> for normal needs. This package does contain any science.</p>
+<p>The <a class="reference internal" href="smrt.utils.html#module-smrt.utils" title="smrt.utils"><code class="xref py py-mod docutils literal"><span class="pre">utils</span></code></a> package provides various useful tools to work with SMRT, but they are not strictly necessary. This package includes wrappers to some off-the-shelf models such as DMRT-QMS, HUT and MEMLS.</p>
+<div class="toctree-wrapper compound">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SMRT Documentation</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

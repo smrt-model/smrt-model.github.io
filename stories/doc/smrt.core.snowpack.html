@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.core.snowpack module &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="up" title="smrt.core package" href="smrt.core.html" />
+    <link rel="next" title="smrt.core.substrate module" href="smrt.core.substrate.html" />
+    <link rel="prev" title="smrt.core.sensor module" href="smrt.core.sensor.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="smrt.core.html">smrt.core package</a><ul>
+      <li>Previous: <a href="smrt.core.sensor.html" title="previous chapter">smrt.core.sensor module</a></li>
+      <li>Next: <a href="smrt.core.substrate.html" title="next chapter">smrt.core.substrate module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.core.snowpack">
+<span id="smrt-core-snowpack-module"></span><h1>smrt.core.snowpack module<a class="headerlink" href="#module-smrt.core.snowpack" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#smrt.core.snowpack.Snowpack" title="smrt.core.snowpack.Snowpack"><code class="xref py py-class docutils literal"><span class="pre">Snowpack</span></code></a> instance contains the description of the snowpack, including a list of layers and interfaces between the layers, and the substrate (soil, ice, ...).</p>
+<p>To create a snowpack, it is recommended to use the <a class="reference internal" href="smrt.inputs.make_medium.html#smrt.inputs.make_medium.make_snowpack" title="smrt.inputs.make_medium.make_snowpack"><code class="xref py py-func docutils literal"><span class="pre">make_snowpack()</span></code></a> function which avoids the complexity of creating
+each layer and then the snowpack from the layers. For more complex media (like lake ice or sea ice), it may be necessary to directly call the functions
+to create the different layers (such as <a class="reference internal" href="smrt.inputs.make_medium.html#smrt.inputs.make_medium.make_snow_layer" title="smrt.inputs.make_medium.make_snow_layer"><code class="xref py py-func docutils literal"><span class="pre">make_snow_layer()</span></code></a>).</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># create a 10-m thick snowpack with a single layer,</span>
+<span class="c1"># density is 350 kg/m3. The exponential autocorrelation function is</span>
+<span class="c1"># used to describe the snow and the &quot;size&quot; parameter is therefore</span>
+<span class="c1"># the correlation length which is given as an optional</span>
+<span class="c1"># argument of this function (but is required in practice)</span>
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">make_snowpack</span><span class="p">([</span><span class="mi">10</span><span class="p">],</span> <span class="s2">&quot;exponential&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">350</span><span class="p">],</span> <span class="n">corr_length</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="n">e</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="class">
+<dt id="smrt.core.snowpack.Snowpack">
+<em class="property">class </em><code class="descname">Snowpack</code><span class="sig-paren">(</span><em>layers=None</em>, <em>interfaces=None</em>, <em>substrate=None</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.snowpack.Snowpack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>holds the description of the snowpack, including the layers, interfaces, and the substrate</p>
+<dl class="attribute">
+<dt id="smrt.core.snowpack.Snowpack.nlayer">
+<code class="descname">nlayer</code><a class="headerlink" href="#smrt.core.snowpack.Snowpack.nlayer" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the number of layers</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="smrt.core.snowpack.Snowpack.layer_thicknesses">
+<code class="descname">layer_thicknesses</code><a class="headerlink" href="#smrt.core.snowpack.Snowpack.layer_thicknesses" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the thickness of each layer</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="smrt.core.snowpack.Snowpack.layer_depths">
+<code class="descname">layer_depths</code><a class="headerlink" href="#smrt.core.snowpack.Snowpack.layer_depths" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the depth of the bottom of each layer</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.core.snowpack.Snowpack.append">
+<code class="descname">append</code><span class="sig-paren">(</span><em>layer</em>, <em>interface=None</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.snowpack.Snowpack.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>append a new layer at the bottom of the stack of layers. The interface is that at the top of the appended layer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>layer</strong> &#8211; instance of <code class="xref py py-class docutils literal"><span class="pre">Layer</span></code></li>
+<li><strong>interface</strong> &#8211; type of interface. By default, flat surface (<code class="xref py py-class docutils literal"><span class="pre">Flat</span></code>) is considered meaning the coefficients are calculated with Fresnel coefficient
+and using the effective permittivity of the surrounding layers</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="smrt.core.snowpack.Snowpack.basic_check">
+<code class="descname">basic_check</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.snowpack.Snowpack.basic_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.core.snowpack.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

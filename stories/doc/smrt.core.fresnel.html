@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.core.fresnel module &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="up" title="smrt.core package" href="smrt.core.html" />
+    <link rel="next" title="smrt.core.globalconstants module" href="smrt.core.globalconstants.html" />
+    <link rel="prev" title="smrt.core.error module" href="smrt.core.error.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="smrt.core.html">smrt.core package</a><ul>
+      <li>Previous: <a href="smrt.core.error.html" title="previous chapter">smrt.core.error module</a></li>
+      <li>Next: <a href="smrt.core.globalconstants.html" title="next chapter">smrt.core.globalconstants module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.core.fresnel">
+<span id="smrt-core-fresnel-module"></span><h1>smrt.core.fresnel module<a class="headerlink" href="#module-smrt.core.fresnel" title="Permalink to this headline">¶</a></h1>
+<p>fresnel coefficients formulae used in the packages <a class="reference internal" href="smrt.interface.html#module-smrt.interface" title="smrt.interface"><code class="xref py py-mod docutils literal"><span class="pre">smrt.interface</span></code></a> and <a class="reference internal" href="smrt.substrate.html#module-smrt.substrate" title="smrt.substrate"><code class="xref py py-mod docutils literal"><span class="pre">smrt.substrate</span></code></a>.</p>
+<dl class="function">
+<dt id="smrt.core.fresnel.fresnel_coefficients">
+<code class="descname">fresnel_coefficients</code><span class="sig-paren">(</span><em>eps_1</em>, <em>eps_2</em>, <em>mu1</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.fresnel.fresnel_coefficients" title="Permalink to this definition">¶</a></dt>
+<dd><p>compute the reflection in two polarizations (H and V)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>eps_1</strong> &#8211; permittivity of medium 1</li>
+<li><strong>eps_2</strong> &#8211; permittivity of medium 2</li>
+<li><strong>mu1</strong> &#8211; cosine zenith angle in medium 1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">rv, rh and mu2 the cosine of the angle in medium 2</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="smrt.core.fresnel.fresnel_reflection_matrix">
+<code class="descname">fresnel_reflection_matrix</code><span class="sig-paren">(</span><em>eps_1</em>, <em>eps_2</em>, <em>mu1</em>, <em>npol</em>, <em>return_as_diagonal=False</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.fresnel.fresnel_reflection_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>compute the fresnel reflection matrix for/in medium 1 laying above medium 2</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>npol</strong> &#8211; number of polarizations to return</li>
+<li><strong>eps_1</strong> &#8211; permittivity of medium 1</li>
+<li><strong>eps_2</strong> &#8211; permittivity of medium 2</li>
+<li><strong>mu1</strong> &#8211; cosine zenith angle in medium 1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a matrix or the diagional depending on <cite>return_as_diagonal</cite></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="smrt.core.fresnel.fresnel_transmission_matrix">
+<code class="descname">fresnel_transmission_matrix</code><span class="sig-paren">(</span><em>eps_1</em>, <em>eps_2</em>, <em>mu1</em>, <em>npol</em>, <em>return_as_diagonal=False</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.fresnel.fresnel_transmission_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>compute the fresnel reflection matrix for/in medium 1 laying above medium 2</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>npol</strong> &#8211; number of polarizations to return</li>
+<li><strong>eps_1</strong> &#8211; permittivity of medium 1</li>
+<li><strong>eps_2</strong> &#8211; permittivity of medium 2</li>
+<li><strong>mu1</strong> &#8211; cosine zenith angle in medium 1</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a matrix or the diagional depending on <cite>return_as_diagonal</cite></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.core.fresnel.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

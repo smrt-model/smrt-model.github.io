@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.core.model module &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="up" title="smrt.core package" href="smrt.core.html" />
+    <link rel="next" title="smrt.core.plugin module" href="smrt.core.plugin.html" />
+    <link rel="prev" title="smrt.core.layer module" href="smrt.core.layer.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="smrt.core.html">smrt.core package</a><ul>
+      <li>Previous: <a href="smrt.core.layer.html" title="previous chapter">smrt.core.layer module</a></li>
+      <li>Next: <a href="smrt.core.plugin.html" title="next chapter">smrt.core.plugin module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.core.model">
+<span id="smrt-core-model-module"></span><h1>smrt.core.model module<a class="headerlink" href="#module-smrt.core.model" title="Permalink to this headline">¶</a></h1>
+<p>A model in SMRT is composed of the electromagnetic scattering theory (<a class="reference internal" href="smrt.emmodel.html#module-smrt.emmodel" title="smrt.emmodel"><code class="xref py py-mod docutils literal"><span class="pre">smrt.emmodel</span></code></a>) and 
+the radiative transfer solver (<a class="reference internal" href="smrt.rtsolver.html#module-smrt.rtsolver" title="smrt.rtsolver"><code class="xref py py-mod docutils literal"><span class="pre">smrt.rtsolver</span></code></a>).
+The <a class="reference internal" href="smrt.emmodel.html#module-smrt.emmodel" title="smrt.emmodel"><code class="xref py py-mod docutils literal"><span class="pre">smrt.emmodel</span></code></a> is responsible for computation of the scattering and absorption coefficients and the phase function of a layer.
+It is applied to each layer and it is even possible
+to choose different emmodel for each layer (for instance for a complex medium made of different materials: snow, soil, water, atmosphere, ...).
+The <a class="reference internal" href="smrt.rtsolver.html#module-smrt.rtsolver" title="smrt.rtsolver"><code class="xref py py-mod docutils literal"><span class="pre">smrt.rtsolver</span></code></a> is responsible for propagation of the incident or emitted energy through the layers, up to the surface, and eventually 
+through the atmosphere.</p>
+<p>To build a model, use the <a class="reference internal" href="#smrt.core.model.make_model" title="smrt.core.model.make_model"><code class="xref py py-func docutils literal"><span class="pre">make_model()</span></code></a> function with the type of emmodel and type of rtsolver as arguments.
+Then call the <a class="reference internal" href="#smrt.core.model.Model.run" title="smrt.core.model.Model.run"><code class="xref py py-meth docutils literal"><span class="pre">Model.run()</span></code></a> method of the model instance by specifying the sensor (<a class="reference internal" href="smrt.core.sensor.html#smrt.core.sensor.Sensor" title="smrt.core.sensor.Sensor"><code class="xref py py-class docutils literal"><span class="pre">smrt.core.sensor.Sensor</span></code></a>),
+snowpack (<a class="reference internal" href="smrt.core.snowpack.html#smrt.core.snowpack.Snowpack" title="smrt.core.snowpack.Snowpack"><code class="xref py py-class docutils literal"><span class="pre">smrt.core.snowpack.Snowpack</span></code></a>) and optionally atmosphere (see <a class="reference internal" href="smrt.atmosphere.html#module-smrt.atmosphere" title="smrt.atmosphere"><code class="xref py py-mod docutils literal"><span class="pre">smrt.atmosphere</span></code></a>).
+The results are returned as a <a class="reference internal" href="smrt.core.result.html#smrt.core.result.Result" title="smrt.core.result.Result"><code class="xref py py-class docutils literal"><span class="pre">Result</span></code></a> which can then been interrogated to retrieve brightness temperature,
+backscattering coefficient, etc.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="s2">&quot;iba&quot;</span><span class="p">,</span> <span class="s2">&quot;rtsolver&quot;</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sensor</span><span class="p">,</span> <span class="n">snowpack</span><span class="p">)</span>  <span class="c1"># sensor and snowpack are created before</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">TbV</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="#smrt.core.model.Model.run" title="smrt.core.model.Model.run"><code class="xref py py-meth docutils literal"><span class="pre">run()</span></code></a> method can be used with list of snowpacks. In this case, it is recommended to set the snowpack_dimension_name and 
+snowpack_dimension_values variable which gives the name and values of the coordinates that are create for the Results. This is useful with
+timeseries for instance.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">snowpacks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+    <span class="c1">#  create a snowpack for each time series</span>
+    <span class="n">sp</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">snowpacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
+    <span class="n">times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
+
+<span class="c1"># now run the model</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sensor</span><span class="p">,</span> <span class="n">snowpacks</span><span class="p">,</span> <span class="n">snowpack_dimension</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">times</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The <cite>res</cite> variable has now a coordinate <cite>time</cite> and res.TbV() returns a timeseries.</p>
+<dl class="function">
+<dt id="smrt.core.model.make_model">
+<code class="descname">make_model</code><span class="sig-paren">(</span><em>emmodel</em>, <em>rtsolver</em>, <em>emmodel_kwargs=None</em>, <em>rtsolver_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.model.make_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a new model with a given EM model and RT solver. The model is then ready to be run using the <a class="reference internal" href="#smrt.core.model.Model.run" title="smrt.core.model.Model.run"><code class="xref py py-meth docutils literal"><span class="pre">Model.run()</span></code></a> method. This function is the privileged way
+to create models compared to class instantiation. It supports automatic import of the emmodel and rtsolver modules.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>emmodel</strong> (<em>string or class or list of strings or classes. If a list is given, different models are used for the different layers of the snowpack. In this case, the size of the list must be the same as the number of layers in the snowpack.</em>) &#8211; type of emmodel to use. Can be given by the name of a file/module in the emmodel directory (as a string) or a class.</li>
+<li><strong>rtsolver</strong> (<em>string or class</em>) &#8211; type of solver to use. Can be given by the name of a file/module in the rtsolver directeory (as a string) or a class.</li>
+<li><strong>emmodel_kwargs</strong> (<em>dict or a list of dict. In the latter case, the size of the list must be the same as the number of layers in the snowpack.</em>) &#8211; extra arguments to use to create emmodel instance. Valid arguments depend on the selected emmodel. It is documented in for each emmodel class.</li>
+<li><strong>rtsolver_kwargs</strong> &#8211; extra to use to create the rtsolver instance (see __init__ of the solver used).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a model instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="smrt.core.model.Model">
+<em class="property">class </em><code class="descname">Model</code><span class="sig-paren">(</span><em>emmodel</em>, <em>rtsolver</em>, <em>emmodel_kwargs=None</em>, <em>rtsolver_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.model.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This class drives the whole calculation</p>
+<dl class="method">
+<dt id="smrt.core.model.Model.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>sensor</em>, <em>snowpack</em>, <em>atmosphere=None</em>, <em>snowpack_dimension=None</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.core.model.Model.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the model for the given sensor configuration and return the results</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sensor</strong> &#8211; sensor to use for the calculation</li>
+<li><strong>snowpack</strong> &#8211; snowpack to use for the calculation</li>
+<li><strong>snowpack_dimension</strong> &#8211; name and values (as a tuple) of the dimension to create for the results when a list of snowpack is provided. E.g. time, point, longitude, latitude. By default the dimension is called &#8216;snowpack&#8217; and the values are from 1 to the number of snowpacks.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">result of the calculation(s) as a <code class="xref py py-class docutils literal"><span class="pre">Results</span></code> instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.core.model.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

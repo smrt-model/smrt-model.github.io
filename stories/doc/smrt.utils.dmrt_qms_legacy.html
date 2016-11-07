@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.utils.dmrt_qms_legacy module &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="up" title="smrt.utils package" href="smrt.utils.html" />
+    <link rel="next" title="smrt.utils.hut_legacy module" href="smrt.utils.hut_legacy.html" />
+    <link rel="prev" title="smrt.utils package" href="smrt.utils.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="smrt.utils.html">smrt.utils package</a><ul>
+      <li>Previous: <a href="smrt.utils.html" title="previous chapter">smrt.utils package</a></li>
+      <li>Next: <a href="smrt.utils.hut_legacy.html" title="next chapter">smrt.utils.hut_legacy module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.utils.dmrt_qms_legacy">
+<span id="smrt-utils-dmrt-qms-legacy-module"></span><h1>smrt.utils.dmrt_qms_legacy module<a class="headerlink" href="#module-smrt.utils.dmrt_qms_legacy" title="Permalink to this headline">¶</a></h1>
+<p>Wrapper to the original DMRT_QMS matlab code using the SMRT framework. To use this module, extra installation are needed:</p>
+<blockquote>
+<div><ul class="simple">
+<li>get DMRT_QMS from <a class="reference external" href="http://web.eecs.umich.edu/~leutsang/Available%20Resources.html">http://web.eecs.umich.edu/~leutsang/Available%20Resources.html</a> and extract the model somewhere</li>
+<li>install the oct2py module using <code class="code docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">oct2py</span></code> or <code class="code docutils literal"><span class="pre">easy_install</span> <span class="pre">install</span> <span class="pre">oct2py</span></code></li>
+<li>install Octave version 3.6 or above.</li>
+<li>for convenience you can set the DMRT_QMS_DIR environment variable to point to DMRT-QMS path. This path can also be programmatically set with and use <a class="reference internal" href="#smrt.utils.dmrt_qms_legacy.set_dmrt_qms_path" title="smrt.utils.dmrt_qms_legacy.set_dmrt_qms_path"><code class="xref py py-func docutils literal"><span class="pre">set_dmrt_qms_path()</span></code></a> function.</li>
+</ul>
+</div></blockquote>
+<p>In case of problem check the instructions given in <a class="reference external" href="http://blink1073.github.io/oct2py/source/installation.html">http://blink1073.github.io/oct2py/source/installation.html</a></p>
+<p>You may also want to increase the number of streams in passive/DMRT_QMS_passive.m</p>
+<dl class="function">
+<dt id="smrt.utils.dmrt_qms_legacy.set_dmrt_qms_path">
+<code class="descname">set_dmrt_qms_path</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.utils.dmrt_qms_legacy.set_dmrt_qms_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>set the path where dmrt_qms archive has been uncompressed, i.e. where the file <cite>dmrt_qmsmain.m</cite> is located.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="smrt.utils.dmrt_qms_legacy.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>sensor</em>, <em>snowpack</em>, <em>dmrt_qms_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.utils.dmrt_qms_legacy.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>call DMRT-QMS for the snowpack and sensor configuration given as argument. The <a class="reference internal" href="smrt.microstructure_model.sticky_hard_spheres.html#module-smrt.microstructure_model.sticky_hard_spheres" title="smrt.microstructure_model.sticky_hard_spheres"><code class="xref py py-mod docutils literal"><span class="pre">sticky_hard_spheres</span></code></a> microstructure model 
+must be used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>snowpack</strong> &#8211; describe the snowpack.</li>
+<li><strong>sensor</strong> &#8211; describe the sensor configuration.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.utils.dmrt_qms_legacy.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

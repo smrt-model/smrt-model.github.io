@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>smrt.inputs.make_soil module &#8212; SMRT 0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="SMRT 0 documentation" href="index.html" />
+    <link rel="up" title="smrt.inputs package" href="smrt.inputs.html" />
+    <link rel="next" title="smrt.inputs.sensor_list module" href="smrt.inputs.sensor_list.html" />
+    <link rel="prev" title="smrt.inputs.make_medium module" href="smrt.inputs.make_medium.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="smrt.inputs.html">Inputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.permittivity.html">Permittivity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.microstructure_model.html">Microstructure Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.substrate.html">Substrate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.atmosphere.html">Atmosphere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.emmodel.html">Electromagnetic Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.rtsolver.html">Radiative Transfer Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.core.html">Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smrt.utils.html">Utilities and tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer_guidelines.html">Developer Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">SMRT Documentation</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="smrt.inputs.html">smrt.inputs package</a><ul>
+      <li>Previous: <a href="smrt.inputs.make_medium.html" title="previous chapter">smrt.inputs.make_medium module</a></li>
+      <li>Next: <a href="smrt.inputs.sensor_list.html" title="next chapter">smrt.inputs.sensor_list module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-smrt.inputs.make_soil">
+<span id="smrt-inputs-make-soil-module"></span><h1>smrt.inputs.make_soil module<a class="headerlink" href="#module-smrt.inputs.make_soil" title="Permalink to this headline">¶</a></h1>
+<p>This module provides a function to build soil model and provides some soil permittivity formulae.</p>
+<p>To create a substrate, use/implement an helper function such as <code class="xref py py-func docutils literal"><span class="pre">make_soil()</span></code>. This function is able to 
+automatically load a specific soil model and provides some soil permittivity formulae as well.</p>
+<p>Examples:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">smrt</span> <span class="k">import</span> <span class="n">make_soil</span>
+<span class="n">soil</span> <span class="o">=</span> <span class="n">make_soil</span><span class="p">(</span><span class="s2">&quot;soil_wegmuller&quot;</span><span class="p">,</span> <span class="s2">&quot;dobson85&quot;</span><span class="p">,</span> <span class="n">moisture</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">sand</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">clay</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">drymatter</span><span class="o">=</span><span class="mi">1100</span><span class="p">,</span> <span class="n">roughness_rms</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is recommand to first read the documentation of <code class="xref py py-func docutils literal"><span class="pre">make_soil()</span></code> and then explore the different types of soil
+models.</p>
+<dl class="function">
+<dt id="smrt.inputs.make_soil.make_soil">
+<code class="descname">make_soil</code><span class="sig-paren">(</span><em>substrate_model</em>, <em>permittivity_model</em>, <em>temperature</em>, <em>moisture=None</em>, <em>sand=None</em>, <em>clay=None</em>, <em>drymatter=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.inputs.make_soil.make_soil" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a soil instance based on a given surface electromagnetic model, a permittivity model and parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>substrate_model</strong> &#8211; name of substrate model, can be a class or a string. e.g. fresnel, wegmuller...</li>
+<li><strong>permittivity_model</strong> &#8211; permittivity_model to use. Can be a name (&#8220;hut_epss&#8221; or &#8220;dobson85&#8221;), a function of frequency and temperature or a complex value.</li>
+<li><strong>moisture</strong> &#8211; soil moisture in m:sup:<cite>3</cite> m:sup:<cite>-3</cite> to compute the permittivity. This parameter is used depending on the permittivity_model.</li>
+<li><strong>sand</strong> &#8211; soil relative sand content. This parameter is used or not depending on the permittivity_model.</li>
+<li><strong>clay</strong> &#8211; soil relative clay content. This parameter is used or not depending on the permittivity_model.</li>
+<li><strong>drymatter</strong> &#8211; soil content in dry matter in kg m:sup:<cite>-3</cite>. This parameter is used or not depending on the permittivity_model.</li>
+<li><strong>**kwargs</strong> &#8211; <p>geometrical parameters depending on the substrate_model. Refer to the document of each model to see the list of required and optional parameters.</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Usually, it is roughness_rms, corr_length, ...</p>
+<p><strong>Usage example:</strong></p>
+<dl class="docutils">
+<dt>::</dt>
+<dd>TOTEST: bottom = substrate.make(&#8216;Flat&#8217;, permittivity_model=complex(&#8216;6-0.5j&#8217;))
+TOTEST:  bottom = substrate.make(&#8216;Wegmuller&#8217;, permittivity_model=&#8217;soil&#8217;, roughness_rms=0.25, moisture=0.25)</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="smrt.inputs.make_soil.soil_dielectric_constant_dobson">
+<code class="descname">soil_dielectric_constant_dobson</code><span class="sig-paren">(</span><em>frequency</em>, <em>tempK</em>, <em>SM</em>, <em>S</em>, <em>C</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.inputs.make_soil.soil_dielectric_constant_dobson" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="smrt.inputs.make_soil.soil_dielectric_constant_hut">
+<code class="descname">soil_dielectric_constant_hut</code><span class="sig-paren">(</span><em>frequency</em>, <em>tempK</em>, <em>SM</em>, <em>sand</em>, <em>clay</em>, <em>dm_rho</em><span class="sig-paren">)</span><a class="headerlink" href="#smrt.inputs.make_soil.soil_dielectric_constant_hut" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2016, G. Picard, M. Sandells, H. Löwe.
+      
+      |
+      <a href="_sources/smrt.inputs.make_soil.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
