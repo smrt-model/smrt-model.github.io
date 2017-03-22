@@ -17,8 +17,8 @@ import time
 
 
 # Data about this site
-BLOG_AUTHOR = "Nikola Tesla"  # (translatable)
-BLOG_TITLE = "My Nikola Site"  # (translatable)
+BLOG_AUTHOR = "Ghislain Picard, Melody Sandells and Henning Löwe"  # (translatable)
+BLOG_TITLE = "SMRT Home"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
 SITE_URL = "https://wwwtest.smrt-model.science/"
@@ -132,10 +132,13 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        ("/archive.html", "Archive"),
-        ("/categories/", "Tags"),
-        ("/rss.xml", "RSS feed"),
-    ),
+        ("/download/index.html", "Download"),
+        ("/getstarted/index.html", "Getting Started"),
+        ("/Documentation/", "Documentation"),
+        ("/help/", "Help"),
+        ("/pubs/index.html", "Publications"),
+        ("/contribute/index.html", "Contribute"),
+        ),
 }
 
 # Name of the theme to use.
@@ -1009,7 +1012,7 @@ MARKDOWN_EXTENSIONS = ['fenced_code', 'codehilite', 'extra']
 
 # Show link to source for the posts?
 # Formerly known as HIDE_SOURCELINK (inverse)
-# SHOW_SOURCELINK = True
+SHOW_SOURCELINK = False
 # Copy the source files for your pages?
 # Setting it to False implies SHOW_SOURCELINK = False
 # COPY_SOURCES = True
