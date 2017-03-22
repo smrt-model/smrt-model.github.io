@@ -185,6 +185,8 @@ PAGES = (
     ("stories/*.ipynb", "", "story.tmpl"),
     ("stories/*.txt", "", "story.tmpl"),
     ("stories/*.html", "", "story.tmpl"),
+    ("stories/doc/*.html", "", "story.tmpl"),
+    ("stories/doc/*.rst", "", "story.tmpl"),
 )
 
 
