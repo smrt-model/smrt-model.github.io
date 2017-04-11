@@ -134,7 +134,7 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/download/index.html", "Download"),
         ("/getstarted/index.html", "Getting Started"),
-        ("/Documentation/", "Documentation"),
+        ("http://webhooktest.readthedocs.io/en/latest/", "Documentation"),
         ("/help/", "Help"),
         ("/pubs/index.html", "Publications"),
         ("/contribute/index.html", "Contribute"),
