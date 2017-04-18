@@ -133,9 +133,9 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/download/index.html", "Download"),
-        ("/getstarted/index.html", "Getting Started"),
+        ("/getstarted.html", "Getting Started"),
         ("http://webhooktest.readthedocs.io/en/latest/", "Documentation"),
-        ("/help/", "Help"),
+        ("/help/index.html", "Help"),
         ("/pubs/index.html", "Publications"),
         ("/contribute/index.html", "Contribute"),
         ),
