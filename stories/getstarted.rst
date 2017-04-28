@@ -84,7 +84,9 @@ The result should be ``267.73`` K. To adapt this to multiple layers, extend the 
 Tutorials
 -----------
 
-There are many ways in which to use SMRT. A great place to start is with the `tutorials <https://esaproject.smrt-model.science/shownotebooks/browse/smrtnotebooks/tutorial>`_
+There are many ways in which to use SMRT. Here's a list of tutorials:
 
+#. `Sensitivity study with a list of snowpacks <../sensitivity_study/index.html>`_
+#. `Use wrapper to call MEMLS <../memls_legacy/index.html>`_
 
 
