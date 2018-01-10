@@ -1,0 +1,37 @@
+
+a.u-url {
+    color: #125d8a;
+    text-decoration: none;
+}
+
+.bigbutton {
+    font-size: 120%;
+    background-color:  #003166;
+}
+
+.bigbutton a {
+    color: #fff;
+}
+
+
+.navbar-inverse {
+    background-color:  #fcfcff;
+    border-color: #003166;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color: #080808;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+  color: #fff;
+  background-color: #003166;
+}
+
+div.entry-content p {
+    text-align: justify;
+}

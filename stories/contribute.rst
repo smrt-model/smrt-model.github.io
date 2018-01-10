@@ -6,13 +6,7 @@
 .. link:
 .. description:
 .. type: text
-
-
-This is the first page
-======================
-
-
-Please see the Developers Guide (add link)
+.. pretty_url: False
 
 
 .. image:: /images/smrtstructure.png

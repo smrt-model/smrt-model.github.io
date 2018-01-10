@@ -132,19 +132,14 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        ("/download/index.html", "Download"),
         ("/getstarted.html", "Getting Started"),
-        #("/tutorials/index.html", "Tutorials"),
-        ("http://webhooktest.readthedocs.io/en/latest/", "Documentation"),
-        #("/help/index.html", "Help"),
-        ("http://2.29.113.114/","Help"),
-        ("/pubs/index.html", "Publications"),
+        ("/documentation.html", "Documentation"),
         ("/contribute/index.html", "Contribute"),
         ),
 }
 
 # Name of the theme to use.
-THEME = "bootstrap3"
+THEME = "smrt-theme"
 
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
@@ -187,8 +182,6 @@ PAGES = (
     ("stories/*.ipynb", "", "story.tmpl"),
     ("stories/*.txt", "", "story.tmpl"),
     ("stories/*.html", "", "story.tmpl"),
-    ("stories/doc/*.html", "", "story.tmpl"),
-    ("stories/doc/*.rst", "", "story.tmpl"),
 )
 
 
