@@ -134,7 +134,7 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/getstarted.html", "Getting Started"),
         ("/documentation.html", "Documentation"),
-        ("/contribute/index.html", "Contribute"),
+        ("/contribute.html", "Contribute"),
         ),
 }
 
