@@ -28,7 +28,7 @@ In the meantime, downloadable SMRT presentations are here:
 Reference API documentation
 ----------------------------
 
-The detailed documentation with all SMRT functions and objects is in the `reference API documentation <http://webhooktest.readthedocs.io/en/latest/>`_
+The detailed documentation with all SMRT functions and objects is in the `reference API documentation <http://smrt.readthedocs.io/>`_
 
 
 Code examples
