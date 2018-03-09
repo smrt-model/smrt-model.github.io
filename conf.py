@@ -21,7 +21,7 @@ BLOG_AUTHOR = "Ghislain Picard, Melody Sandells and Henning Löwe"  # (translata
 BLOG_TITLE = "SMRT Home"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "https://wwwtest.smrt-model.science/"
+SITE_URL = "https://www.smrt-model.science/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://example.com/"
