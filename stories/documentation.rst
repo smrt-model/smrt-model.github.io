@@ -15,14 +15,21 @@ Several resources are available to learn about SMRT:
 Publications
 ------------
 
-* The reference SMRT paper is submitted to GMDD! Please check back later for an update.
+* The `reference SMRT paper <https://www.geosci-model-dev-discuss.net/gmd-2017-314/>`_ is available in GMDD!
 
 Presentations
 -------------
 
-In the meantime, downloadable SMRT presentations are here:
+Downloadable SMRT presentations from the SMRT workshop:
 
-* `AGU Fall Meeting, 2016 </presentations/talk_agu2016_smrt_henning.pdf>`_ as presented by H. Löwe
+* `Introduction to microwave modelling </presentations/1_introduction-microwave-modeling.pdf>`_
+* `Introduction to SMRT </presentations/2_intro-smrt.pdf>`_
+* `Electromagnetic Theory </presentations/3_lecture_emtheory_web.pdf>`_
+* `Snow Microstructure </presentations/4_lecture_microstructure_web>`_
+* `Radiative Transfer Theory in SMRT </presentations/5_lecture-RT-in-SMRT-v2.pdf>`_
+* `Becoming an SMRT Developer </presentations/6_lecture-SMRTdev.pdf>`_
+* `Atmosphere and Substrate </presentations/7_smrt-substrate-atmosv2.pdf>`_
+* `Lightning Talks from Participants </presentations/smrt18lightningcompilation_fordistribution.pdf>`_
 
 
 Reference API documentation
@@ -36,4 +43,6 @@ Code examples
 
 * Official examples (notebooks): `RunningSMRT <https://github.com/smrt-model/runningsmrt>`_
 
-* Code to built figures in the GMDD paper (notenooks): `SMRT1paper <https://github.com/smrt-model/smrt1paper>`_
+* Code to build figures in the GMDD paper (notenooks): `SMRT1paper <https://github.com/smrt-model/smrt1paper>`_
+
+* Tutorials from the 1st SMRT Workshop: `Workshop tutorials <https://github.com/smrt-model/training>`_

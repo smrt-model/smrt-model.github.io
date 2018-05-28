@@ -134,6 +134,7 @@ NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("/getstarted.html", "Getting Started"),
         ("/documentation.html", "Documentation"),
+        ("https://community.smrt-model.science/", "Community Forum"),
         ("/contribute.html", "Contribute"),
         ),
 }
