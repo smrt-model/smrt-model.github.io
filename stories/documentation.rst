@@ -15,7 +15,7 @@ Several resources are available to learn about SMRT:
 Publications
 ------------
 
-* The `reference SMRT paper <https://www.geosci-model-dev-discuss.net/gmd-2017-314/>`_ is available in GMDD!
+* The `reference SMRT paper <https://www.geosci-model-dev.net/11/2763/2018/gmd-11-2763-2018.html>`_ is available in GMD!
 
 Presentations
 -------------
