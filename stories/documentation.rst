@@ -37,6 +37,7 @@ Reference API documentation
 
 The detailed documentation with all SMRT functions and objects is in the `reference API documentation <http://smrt.readthedocs.io/>`_
 
+In addition, a graph `"What's in SMRT" <whatsinsmrt/index.html>`_ highlights all the components currently implemented
 
 Code examples
 --------------
