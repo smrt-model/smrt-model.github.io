@@ -15,21 +15,21 @@ Several resources are available to learn about SMRT:
 Publications
 ------------
 
-* The `reference SMRT paper <https://www.geosci-model-dev-discuss.net/gmd-2017-314/>`_ is available in GMDD!
+* The `reference SMRT paper <https://www.geosci-model-dev.net/11/2763/2018/gmd-11-2763-2018.pdf>`_ is available in GMD!
 
 Presentations
 -------------
 
-Downloadable SMRT presentations from the SMRT workshop:
+Downloadable SMRT presentations from the 2nd SMRT workshop:
 
-* `Introduction to microwave modelling </presentations/1_introduction-microwave-modeling.pdf>`_
-* `Introduction to SMRT </presentations/2_intro-smrt.pdf>`_
-* `Electromagnetic Theory </presentations/3_lecture_emtheory_web.pdf>`_
-* `Snow Microstructure </presentations/4_lecture_microstructure_web>`_
-* `Radiative Transfer Theory in SMRT </presentations/5_lecture-RT-in-SMRT-v2.pdf>`_
-* `Becoming an SMRT Developer </presentations/6_lecture-SMRTdev.pdf>`_
-* `Atmosphere and Substrate </presentations/7_smrt-substrate-atmosv2.pdf>`_
-* `Lightning Talks from Participants </presentations/smrt18lightningcompilation_fordistribution.pdf>`_
+* `Introduction to microwave modelling </SMRTworkshop2/1_introduction-microwave-modeling-2019.pdf>`_
+* `Introduction to SMRT </SMRTworkshop2/2_introduction-smrt.pdf>`_
+* `Electromagnetic Theory </SMRTworkshop2/3_lecture_emtheory_web.pdf>`_
+* `Snow Microstructure </SMRTworkshop2/4_lecture_microstructure_web.pdf>`_
+* `Atmosphere Substrate and Sea Ice </SMRTworkshop2/5_smrt-substrate-atmos-seaice.pdf>`_
+* `Radiative Transfer Theory in SMRT </SMRTworkshop2/6_lecture-RT-in-SMRT-2019.pdf>`_
+* `Becoming an SMRT Developer </SMRTworkshop2/7_lecture-SMRTdev-2019.pdf>`_
+* `Lightning Talks from 2018 Participants </presentations/smrt18lightningcompilation_fordistribution.pdf>`_
 
 
 Reference API documentation
@@ -45,4 +45,4 @@ Code examples
 
 * Code to build figures in the GMDD paper (notenooks): `SMRT1paper <https://github.com/smrt-model/smrt1paper>`_
 
-* Tutorials from the 1st SMRT Workshop: `Workshop tutorials <https://github.com/smrt-model/training>`_
+* Tutorials from the 2nd SMRT Workshop: `Workshop tutorials <https://github.com/smrt-model/training>`_
