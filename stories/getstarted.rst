@@ -102,7 +102,7 @@ Copy this code into a new file called "first-smrt.py" somewhere on your filesyst
 
 If you get an ImportError, it is likely that python does not find the smrt directory. Check that $PYTHONPATH is properly set.
 
-The result of this computation should be ``268.04`` K. To adapt this to multiple layers, extend the size of the snowpack parameter arrays (e.g. below should give a brightness temperature of ``228.45`` K if used in place of the snowpack above)
+The result of this computation should be ``268.21`` K. To adapt this to multiple layers, extend the size of the snowpack parameter arrays (e.g. below should give a brightness temperature of ``240.12`` K if used in place of the snowpack above)
 
 .. code:: python
 
