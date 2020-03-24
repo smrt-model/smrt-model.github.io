@@ -1,6 +1,0 @@
-syntax:glob
-
-cache/
-__pycache__
-output
-stories/.ipynb_checkpoints
