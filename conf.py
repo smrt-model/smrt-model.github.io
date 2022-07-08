@@ -140,11 +140,12 @@ NAVIGATION_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "smrt-theme"
+THEME = "bootstrap4"  
+#THEME = "smrt-theme"
 
 # Primary color of your theme. This will be used to customize your theme and
 # auto-generate related colors in POSTS_SECTION_COLORS. Must be a HEX value.
-THEME_COLOR = '#5670d4'
+THEME_COLOR = '#56d470'
 
 # POSTS and PAGES contains (wildcard, destination, template) tuples.
 #
@@ -298,7 +299,7 @@ WRITE_TAG_CLOUD = True
 
 # Generate pages for each section. The site must have at least two sections
 # for this option to take effect. It wouldn't build for just one section.
-POSTS_SECTIONS = True
+#POSTS_SECTIONS = True
 
 # Setting this to False generates a list page instead of an index. Indexes
 # are the default and will apply GENERATE_ATOM if set.
@@ -412,6 +413,9 @@ CATEGORY_ALLOW_HIERARCHIES = False
 # If CATEGORY_OUTPUT_FLAT_HIERARCHY is set to True, the output written to output
 # contains only the name of the leaf category and not the whole path.
 CATEGORY_OUTPUT_FLAT_HIERARCHY = False
+
+
+CATEGORY_DESTPATH_AS_DEFAULT = True
 
 # If CATEGORY_PAGES_ARE_INDEXES is set to True, each category's page will contain
 # the posts themselves. If set to False, it will be just a list of links.
@@ -1134,7 +1138,8 @@ SHOW_SOURCELINK = False
 
 # If you hate "Filenames with Capital Letters and Spaces.md", you should
 # set this to true.
-UNSLUGIFY_TITLES = True
+#UNSLUGIFY_TITLES = True
+FILE_METADATA_UNSLUGIFY_TITLES = True
 
 # Additional metadata that is added to a post when creating a new_post
 # ADDITIONAL_METADATA = {}

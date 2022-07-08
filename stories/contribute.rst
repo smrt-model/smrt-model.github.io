@@ -52,13 +52,13 @@ You can then see the documentation in the ``smrt/doc/build/html/`` folder. Note 
 Testing
 --------
 
-We use the ``nose`` testing framework. Please write tests to check your code performs as you expect it to. Tests for a module are stored in the same folder and given the name ``test_yourmodulename.py``.
+We use the ``pytest`` testing framework. Please write tests to check your code performs as you expect it to. Tests for a module are stored in the same folder and given the name ``test_yourmodulename.py``.
 
 .. code:: python
 
-    nosetests
+    pytest
 
-will automatically discover the tests in your file and run them. Running ``nosetests`` in the main smrt folder will run all tests in its subfolders. See `nose <http://nose.readthedocs.io/en/latest/>`_ for more information. It's also worth looking at the `tox package <https://tox.readthedocs.io/en/latest/>`_ for testing on all supported versions of python, and the `tissue package <https://pypi.python.org/pypi/tissue/>`_ for ensuring PEP008 style compliance.
+will automatically discover the tests in your file and run them. Running ``pytest`` in the main smrt folder will run all tests in its subfolders. It's also worth looking at the `tox package <https://tox.readthedocs.io/en/latest/>`_ for testing on all supported versions of python, and the `tissue package <https://pypi.python.org/pypi/tissue/>`_ for ensuring PEP008 style compliance.
 
 
 Contributing your modules
@@ -72,4 +72,4 @@ Contributors
 
 SMRT was originally developed as part of an ESA-funded project. Consortium members for this project are: G. Picard, M. Sandells, H. Löwe, M. Dumont, R. Essery, N. Floury, A. Kontu, J. Lemmetyinen, C. Mätzler, S. Morin and A. Wiesmann
 
-Contributors to the git repository will be posted here in the future!
+Contributors' name will be posted on github in the future!

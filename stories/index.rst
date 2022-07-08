@@ -8,9 +8,6 @@
 .. type: text
 
 
-This is the first page
-======================
-
 SMRT is an **active / passive microwave radiative transfer model for multilayer snow** written in Python. It was developed with `European Space Agency <http://www.esa.int/>`_ support in order to investigate the representation of the snow microstructure, the main driver of scattering.
 
 SMRT is modular, so allows easy intercomparisons between different modelling approaches in a plug-and-play way. SMRT proposes
@@ -18,9 +15,9 @@ different electromagnetic theories to compute scattering (DMRT, IBA, Rayleigh in
 
 SMRT uses the lastest python version (e.g. 3.8) but also works with earlier versions (3.6 and higher). The code is open source and is hosted on `github <https://github.com/smrt-model/smrt>`_.
 
-.. class:: btn btn-primary btn-lg bigbutton
+.. class:: btn btn-light btn-lg bigbutton
 
-    `Getting started with SMRT </getstarted.html>`_
+   `Getting started with SMRT </getstarted.html>`_
 
 
 Using SMRT is easy
