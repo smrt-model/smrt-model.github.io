@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getting started with SMRT | SMRT Home</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#56d470">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="rss.xml">
+<link rel="canonical" href="https://www.smrt-model.science/getstarted.html">
+<!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><meta name="author" content="Ghislain Picard, Melody Sandells and Henning Löwe">
+<meta property="og:site_name" content="SMRT Home">
+<meta property="og:title" content="Getting started with SMRT">
+<meta property="og:url" content="https://www.smrt-model.science/getstarted.html">
+<meta property="og:description" content="The following procedure explains how to get SMRT running on your personal computer.
+
+Step 1. Install Python and dependencies
+SMRT is developed with the highest stable version of Python but also work w">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-01-09T00:00:00Z">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark
+bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href=".">
+
+            <span id="blog-title">SMRT Home</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item active">
+<a href="#" class="nav-link">Getting Started <span class="sr-only">(active)</span></a>
+                </li>
+<li class="nav-item">
+<a href="documentation.html" class="nav-link">Documentation</a>
+                </li>
+<li class="nav-item">
+<a href="contribute.html" class="nav-link">Contribute</a>
+
+                
+            </li>
+</ul>
+<ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="#" class="u-url">Getting started with SMRT</a></h1>
+
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>The following procedure explains how to get SMRT running on your personal computer.</p>
+<section id="step-1-install-python-and-dependencies"><h2>Step 1. Install Python and dependencies</h2>
+<p>SMRT is developed with the highest stable version of Python but also work with python 2.7 series and 3.4 or higher. <a class="reference external" href="https://www.anaconda.com/distribution/">Anaconda</a> is the recommended distribution to get Python as it contains numerous packages needed for scientific computations and analysis. This is an open source distribution available for Linux, Windows and MacOS. Alternatively, you can install Python with the main package manager of your system (e.g. apt-get on Debian/Ubuntu, rpm on Fedora, homebrew on MacOS, ...) or visit <a class="reference external" href="https://wwww.python.org/">https://wwww.python.org/</a> for more information.</p>
+<p>To keep your system clean we recommend to create a virtual environment for the following installation either via <a class="reference external" href="https://conda.io/docs/user-guide/tasks/manage-environments.html">conda create</a> or <a class="reference external" href="https://virtualenv.pypa.io/en/stable/">virtualenv</a>.</p>
+<p>The main python packages to install are: <a class="reference external" href="http://www.numpy.org/">numpy</a>, <a class="reference external" href="https://www.scipy.org">scipy</a>, <a class="reference external" href="https://pandas.pydata.org/">pandas</a>, <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a> and <a class="reference external" href="https://pypi.python.org/pypi/six">six</a>. With the Anaconda distribution, use the Anaconda navigator or the conda command:</p>
+<div class="code"><pre class="code bash"><a id="rest_code_721eb3b3a5be4382863a5ba4c2fb5336-1" name="rest_code_721eb3b3a5be4382863a5ba4c2fb5336-1" href="getstarted.html#rest_code_721eb3b3a5be4382863a5ba4c2fb5336-1"></a>conda install numpy scipy xarray pandas six
+</pre></div>
+<p>Using pip, it is similar:</p>
+<div class="code"><pre class="code bash"><a id="rest_code_e46f450ec9f34f50a4b7056c7c35dd3f-1" name="rest_code_e46f450ec9f34f50a4b7056c7c35dd3f-1" href="getstarted.html#rest_code_e46f450ec9f34f50a4b7056c7c35dd3f-1"></a>pip install numpy scipy xarray pandas six
+</pre></div>
+<p>In addition, it is likely you will want to plot graph with for instance <a class="reference external" href="https://matplotlib.org/">matplotlib</a>, <a class="reference external" href="https://bokeh.pydata.org/">bokeh</a> or <a class="reference external" href="https://plot.ly/python/">plot.ly</a>.</p>
+<p>To download and keep up-to-date SMRT, it is recommended to use the version control software <a class="reference external" href="https://git-scm.com/">Git</a> that can be installed using the package manager of your system. <a class="reference external" href="https://www.atlassian.com/git/tutorials/install-git">Here are some instructions for installing git</a>. This <a class="reference external" href="http://rogerdudler.github.io/git-guide/">simple guide to using git</a> may also be helpful but the two needed commands are given below.</p>
+</section><section id="step-2-get-smrt-code"><h2>Step 2. Get SMRT code</h2>
+<p>SMRT code is hosted on <a class="reference external" href="https://github.com/smrt-model/smrt">github</a>. To get the code clone the repository with:</p>
+<div class="code"><pre class="code bash"><a id="rest_code_49eb452124384d3f9c0ad3100d8ad014-1" name="rest_code_49eb452124384d3f9c0ad3100d8ad014-1" href="getstarted.html#rest_code_49eb452124384d3f9c0ad3100d8ad014-1"></a>git clone https://github.com/smrt-model/smrt.git
+</pre></div>
+<p>Alternatively, download directly the code with the large green button on <a class="reference external" href="https://github.com/smrt-model/smrt">github</a>.</p>
+<p><strong>Please note the Licence (LGPL) and disclaimer</strong> as this governs what you are allowed to do with SMRT! To get ready for using SMRT, you must install the required external packages.</p>
+<p>Because SMRT is not formally installed in your system, it is necessary to inform Python where the code is. Under Linux, this is done by using the following command (in every terminal or better to put in ~/.bashrc file)</p>
+<div class="code"><pre class="code bash"><a id="rest_code_f7903ba47c8f46e5a83c799b0379c2dc-1" name="rest_code_f7903ba47c8f46e5a83c799b0379c2dc-1" href="getstarted.html#rest_code_f7903ba47c8f46e5a83c799b0379c2dc-1"></a><span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="nv">$PYTHONPATH</span>:/the/full/path/to/smrt
+</pre></div>
+<p>where /the/full/path/to/smrt is the SMRT top directory, i.e. the directory that contains README.md, requirements.txt, etc.</p>
+</section><section id="step-3-a-first-example"><h2>Step 3. A first example</h2>
+<p>This simple script sets up a simple, one-layer snowpack with exponential microstructure. The Improved Born Approximation (IBA) and Discrete Ordinates Radiative Transfer model (DORT) are used to simulate the AMSR-E 37V channel:</p>
+<div class="code"><pre class="code python"><a id="rest_code_ddd18975188d4f139488d63030eaa2fb-1" name="rest_code_ddd18975188d4f139488d63030eaa2fb-1" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-1"></a><span class="kn">from</span> <span class="nn">smrt</span> <span class="kn">import</span> <span class="n">make_snowpack</span><span class="p">,</span> <span class="n">make_model</span><span class="p">,</span> <span class="n">sensor_list</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-2" name="rest_code_ddd18975188d4f139488d63030eaa2fb-2" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-2"></a>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-3" name="rest_code_ddd18975188d4f139488d63030eaa2fb-3" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-3"></a><span class="c1"># prepare inputs</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-4" name="rest_code_ddd18975188d4f139488d63030eaa2fb-4" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-4"></a><span class="n">thickness</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">]</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-5" name="rest_code_ddd18975188d4f139488d63030eaa2fb-5" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-5"></a><span class="n">corr_length</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5e-5</span><span class="p">]</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-6" name="rest_code_ddd18975188d4f139488d63030eaa2fb-6" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-6"></a><span class="n">temperature</span> <span class="o">=</span> <span class="p">[</span><span class="mi">270</span><span class="p">]</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-7" name="rest_code_ddd18975188d4f139488d63030eaa2fb-7" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-7"></a><span class="n">density</span> <span class="o">=</span> <span class="p">[</span><span class="mi">320</span><span class="p">]</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-8" name="rest_code_ddd18975188d4f139488d63030eaa2fb-8" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-8"></a>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-9" name="rest_code_ddd18975188d4f139488d63030eaa2fb-9" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-9"></a><span class="c1"># create the snowpack</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-10" name="rest_code_ddd18975188d4f139488d63030eaa2fb-10" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-10"></a><span class="n">snowpack</span> <span class="o">=</span> <span class="n">make_snowpack</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="n">thickness</span><span class="p">,</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-11" name="rest_code_ddd18975188d4f139488d63030eaa2fb-11" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-11"></a>                         <span class="n">microstructure_model</span><span class="o">=</span><span class="s2">"exponential"</span><span class="p">,</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-12" name="rest_code_ddd18975188d4f139488d63030eaa2fb-12" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-12"></a>                         <span class="n">density</span><span class="o">=</span><span class="n">density</span><span class="p">,</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-13" name="rest_code_ddd18975188d4f139488d63030eaa2fb-13" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-13"></a>                         <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-14" name="rest_code_ddd18975188d4f139488d63030eaa2fb-14" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-14"></a>                         <span class="n">corr_length</span><span class="o">=</span><span class="n">corr_length</span><span class="p">)</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-15" name="rest_code_ddd18975188d4f139488d63030eaa2fb-15" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-15"></a>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-16" name="rest_code_ddd18975188d4f139488d63030eaa2fb-16" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-16"></a><span class="c1"># create the sensor</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-17" name="rest_code_ddd18975188d4f139488d63030eaa2fb-17" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-17"></a><span class="n">radiometer</span> <span class="o">=</span> <span class="n">sensor_list</span><span class="o">.</span><span class="n">amsre</span><span class="p">(</span><span class="s1">'37V'</span><span class="p">)</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-18" name="rest_code_ddd18975188d4f139488d63030eaa2fb-18" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-18"></a>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-19" name="rest_code_ddd18975188d4f139488d63030eaa2fb-19" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-19"></a><span class="c1"># create the model</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-20" name="rest_code_ddd18975188d4f139488d63030eaa2fb-20" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-20"></a><span class="n">m</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="s2">"iba"</span><span class="p">,</span> <span class="s2">"dort"</span><span class="p">)</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-21" name="rest_code_ddd18975188d4f139488d63030eaa2fb-21" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-21"></a>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-22" name="rest_code_ddd18975188d4f139488d63030eaa2fb-22" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-22"></a><span class="c1"># run the model</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-23" name="rest_code_ddd18975188d4f139488d63030eaa2fb-23" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-23"></a><span class="n">result</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">radiometer</span><span class="p">,</span> <span class="n">snowpack</span><span class="p">)</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-24" name="rest_code_ddd18975188d4f139488d63030eaa2fb-24" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-24"></a>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-25" name="rest_code_ddd18975188d4f139488d63030eaa2fb-25" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-25"></a><span class="c1"># outputs</span>
+<a id="rest_code_ddd18975188d4f139488d63030eaa2fb-26" name="rest_code_ddd18975188d4f139488d63030eaa2fb-26" href="getstarted.html#rest_code_ddd18975188d4f139488d63030eaa2fb-26"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">TbV</span><span class="p">())</span>
+</pre></div>
+<p>Copy this code into a new file called "first-smrt.py" somewhere on your filesystem (generally <strong>NOT</strong> in the smrt directory) and execute the code with the python command or by clicking on the file depending on your system:</p>
+<div class="code"><pre class="code bash"><a id="rest_code_e8655fc067b04e30b92d634159051fa3-1" name="rest_code_e8655fc067b04e30b92d634159051fa3-1" href="getstarted.html#rest_code_e8655fc067b04e30b92d634159051fa3-1"></a>python first-smrt.py
+</pre></div>
+<p>If you get an ImportError, it is likely that python does not find the smrt directory. Check that $PYTHONPATH is properly set.</p>
+<p>The result of this computation should be <code class="docutils literal">268.21</code> K. To adapt this to multiple layers, extend the size of the snowpack parameter arrays (e.g. below should give a brightness temperature of <code class="docutils literal">240.12</code> K if used in place of the snowpack above)</p>
+<div class="code"><pre class="code python"><a id="rest_code_954da9e4642049918c763bda4c6ee10c-1" name="rest_code_954da9e4642049918c763bda4c6ee10c-1" href="getstarted.html#rest_code_954da9e4642049918c763bda4c6ee10c-1"></a><span class="n">thickness</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">]</span>
+<a id="rest_code_954da9e4642049918c763bda4c6ee10c-2" name="rest_code_954da9e4642049918c763bda4c6ee10c-2" href="getstarted.html#rest_code_954da9e4642049918c763bda4c6ee10c-2"></a><span class="n">corr_length</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5e-5</span><span class="p">,</span> <span class="mf">3e-4</span><span class="p">]</span>
+<a id="rest_code_954da9e4642049918c763bda4c6ee10c-3" name="rest_code_954da9e4642049918c763bda4c6ee10c-3" href="getstarted.html#rest_code_954da9e4642049918c763bda4c6ee10c-3"></a><span class="n">temperature</span> <span class="o">=</span> <span class="p">[</span><span class="mi">270</span><span class="p">,</span> <span class="mi">260</span><span class="p">]</span>
+<a id="rest_code_954da9e4642049918c763bda4c6ee10c-4" name="rest_code_954da9e4642049918c763bda4c6ee10c-4" href="getstarted.html#rest_code_954da9e4642049918c763bda4c6ee10c-4"></a><span class="n">density</span> <span class="o">=</span> <span class="p">[</span><span class="mi">320</span><span class="p">,</span> <span class="mi">350</span><span class="p">]</span>
+</pre></div>
+<aside class="admonition note"><p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Layer numbers are from the top to the bottom i.e. first in the list is the top.</p></li>
+<li><p>SI units are always used: metres, Kelvin, kilograms, Hertz.</p></li>
+<li><p>Different parameters are needed for each microstructure model. See documentation for details</p></li>
+</ul></aside></section><section id="last-recommendations-staying-up-to-date"><h2>Last Recommendations: Staying up to date</h2>
+<p>If you have cloned SMRT with git, you don't need to use clone again to get the last version, just move to the smrt directory and execute:</p>
+<div class="code"><pre class="code bash"><a id="rest_code_d54a002ccfe54254b56ea5f5078f9873-1" name="rest_code_d54a002ccfe54254b56ea5f5078f9873-1" href="getstarted.html#rest_code_d54a002ccfe54254b56ea5f5078f9873-1"></a>git pull
+</pre></div>
+<p>We recommend to always get the latest version as we constantly correct bugs and improve the code. See git documentation how to revert to a past version.</p>
+</section><section id="going-further-with-the-tutorials"><h2>Going further with the tutorials</h2>
+<p>There are many ways in which to use SMRT. Here's a list of examples:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="sensitivity_study/index.html">Sensitivity study with a list of snowpacks</a></p></li>
+<li><p><a class="reference external" href="memls_legacy/index.html">Use wrapper to call MEMLS</a></p></li>
+<li><p><a class="reference external" href="https://github.com/smrt-model/smrt1paper">Figure in the GMD paper</a></p></li>
+</ol></section>
+</div>
+    
+
+</article><!--End of body content--><footer id="footer">
+            Contents © 2022         <a href="mailto:n.tesla@example.com">Ghislain Picard, Melody Sandells and Henning Löwe</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</body>
+</html>

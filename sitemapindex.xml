@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+ <sitemap>
+  <loc>https://www.smrt-model.science/galleries/rss.xml</loc>
+  <lastmod>2022-07-08T20:16:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://www.smrt-model.science/rss.xml</loc>
+  <lastmod>2022-07-08T19:51:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://www.smrt-model.science/sitemap.xml</loc>
+  <lastmod>2022-07-08T20:26:00Z</lastmod>
+ </sitemap>
+</sitemapindex>

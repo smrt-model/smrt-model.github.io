@@ -1,0 +1,4 @@
+Sitemap: https://www.smrt-model.science/sitemapindex.xml
+
+User-Agent: *
+Host: www.smrt-model.science
