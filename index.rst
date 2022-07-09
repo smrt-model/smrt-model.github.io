@@ -8,12 +8,12 @@
 .. type: text
 
 
-SMRT is an **active / passive microwave radiative transfer model for multilayer snow** written in Python. It was developed with `European Space Agency <http://www.esa.int/>`_ support in order to investigate the representation of the snow microstructure, the main driver of scattering.
+SMRT is an **active / passive microwave multilayer radiative transfer model for snow, sea-ice and lake ice** written in Python. It was developed with `European Space Agency <http://www.esa.int/>`_ support in order to investigate the representation of the snow microstructure, the main driver of scattering, but has now a wider usage.
 
-SMRT is modular, so allows easy intercomparisons between different modelling approaches in a plug-and-play way. SMRT proposes
+SMRT is extremely modular, so allows easy intercomparisons between different modelling approaches in a plug-and-play way. SMRT proposes
 different electromagnetic theories to compute scattering (DMRT, IBA, Rayleigh independent, ...). In the case of IBA, different microstructure representations can be used (Sticky Hard Spheres, Exponential, Gaussian random field, ...). The current version proposes only one radiative transfer solver (DORT) but this can be extended. Last but not least, wrappers are included to run MEMLS, HUT and DMRT-QMS models (in their original matlab code) from within SMRT. Whilst there is plenty to get started with, there are more theoretical advances that can be made. SMRT is intended to be a community model - all are welcome to use it, and to contribute to its development!
 
-SMRT uses the lastest python version (e.g. 3.8) but also works with earlier versions (3.6 and higher). The code is open source and is hosted on `github <https://github.com/smrt-model/smrt>`_.
+SMRT uses the lastest python version (e.g. 3.8) but also works with earlier versions (3.7 and higher). The code is open source and is hosted on `github <https://github.com/smrt-model/smrt>`_.
 
 .. class:: btn btn-light btn-lg bigbutton
 
