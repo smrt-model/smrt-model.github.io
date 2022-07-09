@@ -16,21 +16,21 @@ The following procedure explains how to get SMRT running on your personal comput
 Step 1. Install Python and dependencies
 -----------------------------------------
 
-SMRT is developed with the highest stable version of Python but also work with python 2.7 series and 3.4 or higher. `Anaconda <https://www.anaconda.com/distribution/>`_ is the recommended distribution to get Python as it contains numerous packages needed for scientific computations and analysis. This is an open source distribution available for Linux, Windows and MacOS. Alternatively, you can install Python with the main package manager of your system (e.g. apt-get on Debian/Ubuntu, rpm on Fedora, homebrew on MacOS, ...) or visit `<https://wwww.python.org/>`_ for more information.
+SMRT is developed with one of the highest stable version of Python (3.9 as of July 2022) but also work with python 3.6 or higher. `Anaconda <https://www.anaconda.com/distribution/>`_ is the recommended distribution to get Python as it contains numerous packages needed for scientific computations and analysis. This is an open source distribution available for Linux, Windows and MacOS. Alternatively, you can install Python with the main package manager of your system (e.g. apt-get on Debian/Ubuntu, rpm on Fedora, homebrew on MacOS, ...) or visit `<https://wwww.python.org/>`_ for more information. Anaconda provides good performance because it distributes numpy and scipy using the MKL library which provides highly-optimized LAPACK functions. These functions are heavily used in SMRT. Actually >80% of the computation time is for solving eigenvalue problems with LAPACK, the reason why SMRT is only slightly slower than a RT Fortran code.
 
-To keep your system clean we recommend to create a virtual environment for the following installation either via `conda create <https://conda.io/docs/user-guide/tasks/manage-environments.html>`_ or `virtualenv <https://virtualenv.pypa.io/en/stable/>`_.
+To keep your system clean we highly recommend to create a virtual environment for the following installation either via `conda create <https://conda.io/docs/user-guide/tasks/manage-environments.html>`_ or `virtualenv <https://virtualenv.pypa.io/en/stable/>`_.
 
-The main python packages to install are: `numpy <http://www.numpy.org/>`_, `scipy <https://www.scipy.org>`_, `pandas <https://pandas.pydata.org/>`_, `xarray <http://xarray.pydata.org/en/stable/>`_ and `six <https://pypi.python.org/pypi/six>`_. With the Anaconda distribution, use the Anaconda navigator or the conda command:
+The main python packages to install are: `numpy <http://www.numpy.org/>`_, `scipy <https://www.scipy.org>`_, `pandas <https://pandas.pydata.org/>`_, `xarray <http://xarray.pydata.org/en/stable/>`_. With the Anaconda distribution, use the Anaconda navigator or the conda command:
 
 .. code:: bash
 
-    conda install numpy scipy xarray pandas six
+    conda install numpy scipy xarray pandas
 
 Using pip, it is similar:
 
 .. code:: bash
 
-    pip install numpy scipy xarray pandas six
+    pip install numpy scipy xarray pandas
 
 
 In addition, it is likely you will want to plot graph with for instance `matplotlib <https://matplotlib.org/>`_, `bokeh <https://bokeh.pydata.org/>`_ or `plot.ly <https://plot.ly/python/>`_.
