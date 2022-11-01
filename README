@@ -1,6 +1,2 @@
 
 Never commit on the master branch. Swith to the 'src' branch and read the instructions.
-
-To clone and work on the 'src' branch, use:
-
-```git clone -b src git@github.com:smrt-model/smrt-model.github.io.git```
