@@ -17,7 +17,7 @@ Publications
 
 * `Reference SMRT paper <https://www.geosci-model-dev.net/11/2763/2018/gmd-11-2763-2018.html>`_ (Picard et al., 2018)
 * `Reference SMRT altimetry paper <https://doi.org/10.1016/j.rse.2021.112534>`_ (Larue et al., 2021)
-
+|
 * `Effect of snow microstructure variability on Ku-band radar snow water equivalent retrievals <https://doi.org/10.5194/tc-13-3045-2019>`_ (Rutter et al., 2019)
 * `Arctic and subarctic snow microstructure analysis for microwave brightness temperature simulations <https://doi.org/10.1016/j.rse.2020.111754>`_ (Vargel et al., 2020)
 * `Penetration of interferometric radar signals in Antarctic snow <https://doi.org/10.5194/tc-15-4399-2021>`_ (Rott et al., 2021)
@@ -27,6 +27,7 @@ Publications
 * `The sensitivity of satellite microwave observations to liquid water in the Antarctic snowpack <https://doi.org/10.5194/tc-2022-85>`_ (Picard et al., 2022)
 * `Brief communication: A continuous formulation of microwave scattering from fresh snow to bubbly ice from first principles <https://doi.org/10.5194/tc-16-3861-2022>`_ (Picard et al., 2022)
 * `Year-round sea ice and snow characterization from combined passive and active microwave observations and radiative transfer modeling <https://doi.org/10.1016/j.rse.2022.113061>`_ (Soriot et al., 2022)
+* `The Microwave Snow Grain Size: A New Concept to Predict Satellite Observations Over Snow-Covered Regions <https://doi.org/10.1029/2021AV000630>`_ (Picard et al., 2022)
 * `Remote Sensing of Surface Melt on Antarctica: Opportunities and Challenges <https://ieeexplore.ieee.org/document/9928323>`_ (de Roda Husman et al., 2022)
 
 Presentations
