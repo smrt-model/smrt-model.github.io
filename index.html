@@ -71,7 +71,7 @@ bg-dark
     <p>SMRT is an <strong>active / passive microwave multilayer radiative transfer model for snow, sea-ice and lake ice</strong> written in Python. It was developed with <a class="reference external" href="http://www.esa.int/">European Space Agency</a> support in order to investigate the representation of the snow microstructure, the main driver of scattering, but has now a wider usage.</p>
 <p>SMRT is extremely modular, so allows easy intercomparisons between different modelling approaches in a plug-and-play way. SMRT proposes
 different electromagnetic theories to compute scattering (DMRT, IBA, Rayleigh independent, ...). In the case of IBA, different microstructure representations can be used (Sticky Hard Spheres, Exponential, Gaussian random field, ...). The current version proposes only one radiative transfer solver (DORT) but this can be extended. Last but not least, wrappers are included to run MEMLS, HUT and DMRT-QMS models (in their original matlab code) from within SMRT. Whilst there is plenty to get started with, there are more theoretical advances that can be made. SMRT is intended to be a community model - all are welcome to use it, and to contribute to its development!</p>
-<p>SMRT uses the lastest python version (e.g. 3.8) but also works with earlier versions (3.7 and higher). The code is open source and is hosted on <a class="reference external" href="https://github.com/smrt-model/smrt">github</a>.</p>
+<p>SMRT uses the lastest python version (e.g. 3.9) but also works with earlier versions (3.7 and higher). The code is open source and is hosted on <a class="reference external" href="https://github.com/smrt-model/smrt">github</a>.</p>
 <p class="btn btn-light btn-lg bigbutton"><a class="reference external" href="getstarted.html">Getting started with SMRT</a></p>
 <section id="using-smrt-is-easy"><h2>Using SMRT is easy</h2>
 <p>You must write a (short) driver code, SMRT is a library that your driver code call to perform a calculation. This is simple, there are four main steps in a typical driver code:</p>
@@ -79,31 +79,31 @@ different electromagnetic theories to compute scattering (DMRT, IBA, Rayleigh in
 <ol class="arabic simple">
 <li><p>construct a snowpack (either from field data or snowpack model).</p></li>
 </ol>
-<div class="code"><pre class="code python"><a id="rest_code_2c616ac4341147dc952db38aa67c8286-1" name="rest_code_2c616ac4341147dc952db38aa67c8286-1" href="#rest_code_2c616ac4341147dc952db38aa67c8286-1"></a><span class="n">snowpack</span> <span class="o">=</span> <span class="n">make_snowpack</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span>   <span class="c1"># 10 m deep snowpack</span>
-<a id="rest_code_2c616ac4341147dc952db38aa67c8286-2" name="rest_code_2c616ac4341147dc952db38aa67c8286-2" href="#rest_code_2c616ac4341147dc952db38aa67c8286-2"></a>                         <span class="n">microstructure_model</span><span class="o">=</span><span class="s2">"sticky_hard_spheres"</span><span class="p">,</span>
-<a id="rest_code_2c616ac4341147dc952db38aa67c8286-3" name="rest_code_2c616ac4341147dc952db38aa67c8286-3" href="#rest_code_2c616ac4341147dc952db38aa67c8286-3"></a>                         <span class="n">density</span><span class="o">=</span><span class="mf">320.0</span><span class="p">,</span>   <span class="c1"># 320 kg/m3</span>
-<a id="rest_code_2c616ac4341147dc952db38aa67c8286-4" name="rest_code_2c616ac4341147dc952db38aa67c8286-4" href="#rest_code_2c616ac4341147dc952db38aa67c8286-4"></a>                         <span class="n">temperature</span><span class="o">=</span><span class="mi">260</span><span class="p">,</span> <span class="c1"># 260 K</span>
-<a id="rest_code_2c616ac4341147dc952db38aa67c8286-5" name="rest_code_2c616ac4341147dc952db38aa67c8286-5" href="#rest_code_2c616ac4341147dc952db38aa67c8286-5"></a>                         <span class="n">radius</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">)</span>   <span class="c1"># 100 microns</span>
+<div class="code"><pre class="code python"><a id="rest_code_40528f6b499b49f8a86e6321a03f2587-1" name="rest_code_40528f6b499b49f8a86e6321a03f2587-1" href="#rest_code_40528f6b499b49f8a86e6321a03f2587-1"></a><span class="n">snowpack</span> <span class="o">=</span> <span class="n">make_snowpack</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span>   <span class="c1"># 10 m deep snowpack</span>
+<a id="rest_code_40528f6b499b49f8a86e6321a03f2587-2" name="rest_code_40528f6b499b49f8a86e6321a03f2587-2" href="#rest_code_40528f6b499b49f8a86e6321a03f2587-2"></a>                         <span class="n">microstructure_model</span><span class="o">=</span><span class="s2">"sticky_hard_spheres"</span><span class="p">,</span>
+<a id="rest_code_40528f6b499b49f8a86e6321a03f2587-3" name="rest_code_40528f6b499b49f8a86e6321a03f2587-3" href="#rest_code_40528f6b499b49f8a86e6321a03f2587-3"></a>                         <span class="n">density</span><span class="o">=</span><span class="mf">320.0</span><span class="p">,</span>   <span class="c1"># 320 kg/m3</span>
+<a id="rest_code_40528f6b499b49f8a86e6321a03f2587-4" name="rest_code_40528f6b499b49f8a86e6321a03f2587-4" href="#rest_code_40528f6b499b49f8a86e6321a03f2587-4"></a>                         <span class="n">temperature</span><span class="o">=</span><span class="mi">260</span><span class="p">,</span> <span class="c1"># 260 K</span>
+<a id="rest_code_40528f6b499b49f8a86e6321a03f2587-5" name="rest_code_40528f6b499b49f8a86e6321a03f2587-5" href="#rest_code_40528f6b499b49f8a86e6321a03f2587-5"></a>                         <span class="n">radius</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">)</span>   <span class="c1"># 100 microns</span>
 </pre></div>
 <ol class="arabic simple" start="2">
 <li><p>configure an active or passive sensor with frequency, etc.</p></li>
 </ol>
-<div class="code"><pre class="code python"><a id="rest_code_3e82f4ab9e5d41a3bf78d21f6921c3c2-1" name="rest_code_3e82f4ab9e5d41a3bf78d21f6921c3c2-1" href="#rest_code_3e82f4ab9e5d41a3bf78d21f6921c3c2-1"></a><span class="n">radiometer</span> <span class="o">=</span> <span class="n">sensor_list</span><span class="o">.</span><span class="n">amsre</span><span class="p">(</span><span class="s1">'37V'</span><span class="p">)</span>
+<div class="code"><pre class="code python"><a id="rest_code_0c91b1b519414059bf128fe5f5278cd4-1" name="rest_code_0c91b1b519414059bf128fe5f5278cd4-1" href="#rest_code_0c91b1b519414059bf128fe5f5278cd4-1"></a><span class="n">radiometer</span> <span class="o">=</span> <span class="n">sensor_list</span><span class="o">.</span><span class="n">amsre</span><span class="p">(</span><span class="s1">'37V'</span><span class="p">)</span>
 </pre></div>
 <ol class="arabic simple" start="3">
 <li><p>select the radiative transfer solver, the electromagnetic theory and the microstructure. Optionaly other components can be selected.</p></li>
 </ol>
-<div class="code"><pre class="code python"><a id="rest_code_88b1d0d46a6b402c9354f0698dd4837c-1" name="rest_code_88b1d0d46a6b402c9354f0698dd4837c-1" href="#rest_code_88b1d0d46a6b402c9354f0698dd4837c-1"></a><span class="n">m</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="s2">"iba"</span><span class="p">,</span> <span class="s2">"dort"</span><span class="p">)</span>
+<div class="code"><pre class="code python"><a id="rest_code_892547235818434494de8c1e213685bb-1" name="rest_code_892547235818434494de8c1e213685bb-1" href="#rest_code_892547235818434494de8c1e213685bb-1"></a><span class="n">m</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="s2">"iba"</span><span class="p">,</span> <span class="s2">"dort"</span><span class="p">)</span>
 </pre></div>
 <ol class="arabic simple" start="4">
 <li><p>call "run" for the created model.</p></li>
 </ol>
-<div class="code"><pre class="code python"><a id="rest_code_4911898a607a465b8872b86661d1cae7-1" name="rest_code_4911898a607a465b8872b86661d1cae7-1" href="#rest_code_4911898a607a465b8872b86661d1cae7-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">radiometer</span><span class="p">,</span> <span class="n">snowpack</span><span class="p">)</span>
+<div class="code"><pre class="code python"><a id="rest_code_5e6b823f3e3d4483a93a2d4511d9e00d-1" name="rest_code_5e6b823f3e3d4483a93a2d4511d9e00d-1" href="#rest_code_5e6b823f3e3d4483a93a2d4511d9e00d-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">radiometer</span><span class="p">,</span> <span class="n">snowpack</span><span class="p">)</span>
 </pre></div>
 <ol class="arabic simple" start="5">
 <li><p>The result can be inspected to get brightness temperature or backscattering coefficient at different polarizations, incidence angles, etc.</p></li>
 </ol>
-<div class="code"><pre class="code python"><a id="rest_code_b50d869c89834dfb864fbec7d605b1de-1" name="rest_code_b50d869c89834dfb864fbec7d605b1de-1" href="#rest_code_b50d869c89834dfb864fbec7d605b1de-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">TbV</span><span class="p">())</span>
+<div class="code"><pre class="code python"><a id="rest_code_4892323784f74ae38e37a7be60b05309-1" name="rest_code_4892323784f74ae38e37a7be60b05309-1" href="#rest_code_4892323784f74ae38e37a7be60b05309-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">TbV</span><span class="p">())</span>
 </pre></div>
 </blockquote>
 </section><section id="smrt-is-clearly-structured"><h2>SMRT is clearly structured</h2>
@@ -125,7 +125,7 @@ different electromagnetic theories to compute scattering (DMRT, IBA, Rayleigh in
     
 
 </article><!--End of body content--><footer id="footer">
-            Contents © 2022         <a href="mailto:n.tesla@example.com">Ghislain Picard, Melody Sandells and Henning Löwe</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+            Contents © 2023         <a href="mailto:n.tesla@example.com">Ghislain Picard, Melody Sandells and Henning Löwe</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
             
             
         </footer>
