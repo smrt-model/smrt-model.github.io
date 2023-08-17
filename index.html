@@ -79,31 +79,31 @@ different electromagnetic theories to compute scattering (DMRT, IBA, Rayleigh in
 <ol class="arabic simple">
 <li><p>construct a snowpack (either from field data or snowpack model).</p></li>
 </ol>
-<div class="code"><pre class="code python"><a id="rest_code_48e12362397646c09be389037604285b-1" name="rest_code_48e12362397646c09be389037604285b-1" href="#rest_code_48e12362397646c09be389037604285b-1"></a><span class="n">snowpack</span> <span class="o">=</span> <span class="n">make_snowpack</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span>   <span class="c1"># 10 m deep snowpack</span>
-<a id="rest_code_48e12362397646c09be389037604285b-2" name="rest_code_48e12362397646c09be389037604285b-2" href="#rest_code_48e12362397646c09be389037604285b-2"></a>                         <span class="n">microstructure_model</span><span class="o">=</span><span class="s2">"sticky_hard_spheres"</span><span class="p">,</span>
-<a id="rest_code_48e12362397646c09be389037604285b-3" name="rest_code_48e12362397646c09be389037604285b-3" href="#rest_code_48e12362397646c09be389037604285b-3"></a>                         <span class="n">density</span><span class="o">=</span><span class="mf">320.0</span><span class="p">,</span>   <span class="c1"># 320 kg/m3</span>
-<a id="rest_code_48e12362397646c09be389037604285b-4" name="rest_code_48e12362397646c09be389037604285b-4" href="#rest_code_48e12362397646c09be389037604285b-4"></a>                         <span class="n">temperature</span><span class="o">=</span><span class="mi">260</span><span class="p">,</span> <span class="c1"># 260 K</span>
-<a id="rest_code_48e12362397646c09be389037604285b-5" name="rest_code_48e12362397646c09be389037604285b-5" href="#rest_code_48e12362397646c09be389037604285b-5"></a>                         <span class="n">radius</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">)</span>   <span class="c1"># 100 microns</span>
+<div class="code"><pre class="code python"><a id="rest_code_7c28c30e2e9c44f29f4975606ab53527-1" name="rest_code_7c28c30e2e9c44f29f4975606ab53527-1" href="#rest_code_7c28c30e2e9c44f29f4975606ab53527-1"></a><span class="n">snowpack</span> <span class="o">=</span> <span class="n">make_snowpack</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span>   <span class="c1"># 10 m deep snowpack</span>
+<a id="rest_code_7c28c30e2e9c44f29f4975606ab53527-2" name="rest_code_7c28c30e2e9c44f29f4975606ab53527-2" href="#rest_code_7c28c30e2e9c44f29f4975606ab53527-2"></a>                         <span class="n">microstructure_model</span><span class="o">=</span><span class="s2">"sticky_hard_spheres"</span><span class="p">,</span>
+<a id="rest_code_7c28c30e2e9c44f29f4975606ab53527-3" name="rest_code_7c28c30e2e9c44f29f4975606ab53527-3" href="#rest_code_7c28c30e2e9c44f29f4975606ab53527-3"></a>                         <span class="n">density</span><span class="o">=</span><span class="mf">320.0</span><span class="p">,</span>   <span class="c1"># 320 kg/m3</span>
+<a id="rest_code_7c28c30e2e9c44f29f4975606ab53527-4" name="rest_code_7c28c30e2e9c44f29f4975606ab53527-4" href="#rest_code_7c28c30e2e9c44f29f4975606ab53527-4"></a>                         <span class="n">temperature</span><span class="o">=</span><span class="mi">260</span><span class="p">,</span> <span class="c1"># 260 K</span>
+<a id="rest_code_7c28c30e2e9c44f29f4975606ab53527-5" name="rest_code_7c28c30e2e9c44f29f4975606ab53527-5" href="#rest_code_7c28c30e2e9c44f29f4975606ab53527-5"></a>                         <span class="n">radius</span><span class="o">=</span><span class="mf">100e-6</span><span class="p">)</span>   <span class="c1"># 100 microns</span>
 </pre></div>
 <ol class="arabic simple" start="2">
 <li><p>configure an active or passive sensor with frequency, etc.</p></li>
 </ol>
-<div class="code"><pre class="code python"><a id="rest_code_68add21596654da48cef38750d6b7c8e-1" name="rest_code_68add21596654da48cef38750d6b7c8e-1" href="#rest_code_68add21596654da48cef38750d6b7c8e-1"></a><span class="n">radiometer</span> <span class="o">=</span> <span class="n">sensor_list</span><span class="o">.</span><span class="n">amsre</span><span class="p">(</span><span class="s1">'37V'</span><span class="p">)</span>
+<div class="code"><pre class="code python"><a id="rest_code_568160381c1a40c9a93068737093ad31-1" name="rest_code_568160381c1a40c9a93068737093ad31-1" href="#rest_code_568160381c1a40c9a93068737093ad31-1"></a><span class="n">radiometer</span> <span class="o">=</span> <span class="n">sensor_list</span><span class="o">.</span><span class="n">amsre</span><span class="p">(</span><span class="s1">'37V'</span><span class="p">)</span>
 </pre></div>
 <ol class="arabic simple" start="3">
 <li><p>select the radiative transfer solver, the electromagnetic theory and the microstructure. Optionaly other components can be selected.</p></li>
 </ol>
-<div class="code"><pre class="code python"><a id="rest_code_2da27e00175c414981c13a83764edab2-1" name="rest_code_2da27e00175c414981c13a83764edab2-1" href="#rest_code_2da27e00175c414981c13a83764edab2-1"></a><span class="n">m</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="s2">"iba"</span><span class="p">,</span> <span class="s2">"dort"</span><span class="p">)</span>
+<div class="code"><pre class="code python"><a id="rest_code_101b9b8c1acf46dbb80f4cf60776afb9-1" name="rest_code_101b9b8c1acf46dbb80f4cf60776afb9-1" href="#rest_code_101b9b8c1acf46dbb80f4cf60776afb9-1"></a><span class="n">m</span> <span class="o">=</span> <span class="n">make_model</span><span class="p">(</span><span class="s2">"iba"</span><span class="p">,</span> <span class="s2">"dort"</span><span class="p">)</span>
 </pre></div>
 <ol class="arabic simple" start="4">
 <li><p>call "run" for the created model.</p></li>
 </ol>
-<div class="code"><pre class="code python"><a id="rest_code_f3da69bfd56a4f749d9959594e261af6-1" name="rest_code_f3da69bfd56a4f749d9959594e261af6-1" href="#rest_code_f3da69bfd56a4f749d9959594e261af6-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">radiometer</span><span class="p">,</span> <span class="n">snowpack</span><span class="p">)</span>
+<div class="code"><pre class="code python"><a id="rest_code_6f457bc156e64bc091c99ee1f2f22e09-1" name="rest_code_6f457bc156e64bc091c99ee1f2f22e09-1" href="#rest_code_6f457bc156e64bc091c99ee1f2f22e09-1"></a><span class="n">result</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">radiometer</span><span class="p">,</span> <span class="n">snowpack</span><span class="p">)</span>
 </pre></div>
 <ol class="arabic simple" start="5">
 <li><p>The result can be inspected to get brightness temperature or backscattering coefficient at different polarizations, incidence angles, etc.</p></li>
 </ol>
-<div class="code"><pre class="code python"><a id="rest_code_0a06834eece84785acbc9d8023bfa1a9-1" name="rest_code_0a06834eece84785acbc9d8023bfa1a9-1" href="#rest_code_0a06834eece84785acbc9d8023bfa1a9-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">TbV</span><span class="p">())</span>
+<div class="code"><pre class="code python"><a id="rest_code_7483f1b3b13747d887712622829486a2-1" name="rest_code_7483f1b3b13747d887712622829486a2-1" href="#rest_code_7483f1b3b13747d887712622829486a2-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">TbV</span><span class="p">())</span>
 </pre></div>
 </blockquote>
 </section><section id="smrt-is-clearly-structured"><h2>SMRT is clearly structured</h2>

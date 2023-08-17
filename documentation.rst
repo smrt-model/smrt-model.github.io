@@ -32,16 +32,18 @@ Publications
 Presentations
 -------------
 
-Downloadable SMRT presentations from the 2nd SMRT workshop:
+Downloadable SMRT presentations from the 3rd SMRT workshop (6-8 July 2023, Bremerhaven, Germany):
 
-* `Introduction to microwave modelling </SMRTworkshop2/1_introduction-microwave-modeling-2019.pdf>`_
-* `Introduction to SMRT </SMRTworkshop2/2_introduction-smrt.pdf>`_
-* `Electromagnetic Theory </SMRTworkshop2/3_lecture_emtheory_web.pdf>`_
-* `Snow Microstructure </SMRTworkshop2/4_lecture_microstructure_web.pdf>`_
-* `Atmosphere Substrate and Sea Ice </SMRTworkshop2/5_smrt-substrate-atmos-seaice.pdf>`_
-* `Radiative Transfer Theory in SMRT </SMRTworkshop2/6_lecture-RT-in-SMRT-2019.pdf>`_
-* `Becoming an SMRT Developer </SMRTworkshop2/7_lecture-SMRTdev-2019.pdf>`_
-* `Lightning Talks from 2018 Participants </SMRTworkshop2/smrt18lightningcompilation_fordistribution.pdf>`_
+* `Introduction to SMRT and microwave modelling </SMRTworkshop3/1_introduction-microwave-modeling-plus-SMRTintro-2023.pdf>`_
+* `Electromagnetic Theory </SMRTworkshop3/2_lecture_emtheory_2023.pdf>`_
+* `Introduction to Snow on Sea Ice </SMRTworkshop3/3_20230706_SMRT_snow_sarndt.pdf>`_
+* `Sea Ice in SMRT </SMRTworkshop3/4_presentation-SMRTworkshop2023-seaice.pdf>`_
+* `Snow Microstructure </SMRTworkshop3/5_lecture_microstructure_2023.pdf>`_
+* `Radiative Transfer Theory in SMRT </SMRTworkshop3/6_lecture-RT-in-SMRT-2023.pdf>`_
+* `Substrate and Atmosphere </SMRTworkshop3/7_smrt-substrate-atmos-workshop3.pdf>`_
+* `Altimetry </SMRTworkshop3/8_lecture-altimetry-2023.pdf>`_
+* `Parallel Computing with SMRT </SMRTworkshop3/9_lecture-intensive-calculation-2023.pdf>`_
+* `Lightning Talks from 2023 Participants </SMRTworkshop3/LightningTalks_2023.pdf>`_
 
 
 Reference API documentation
