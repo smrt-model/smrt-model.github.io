@@ -28,6 +28,7 @@ Publications
 * `Year-round sea ice and snow characterization from combined passive and active microwave observations and radiative transfer modeling <https://doi.org/10.1016/j.rse.2022.113061>`_ (Soriot et al., 2022)
 * `The Microwave Snow Grain Size: A New Concept to Predict Satellite Observations Over Snow-Covered Regions <https://doi.org/10.1029/2021AV000630>`_ (Picard et al., 2022)
 * `Remote Sensing of Surface Melt on Antarctica: Opportunities and Challenges <https://ieeexplore.ieee.org/document/9928323>`_ (de Roda Husman et al., 2022)
+* `Evaluation and Application of SMRT Model for L-Band Brightness Temperature Simulation in Arctic Sea Ice <https://doi.org/10.3390/rs15153889>`_ (Fan et al., 2023)
 
 Presentations
 -------------
