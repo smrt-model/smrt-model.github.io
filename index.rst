@@ -17,8 +17,11 @@ SMRT uses the lastest python version (e.g. 3.9) but also works with earlier vers
 
 .. class:: btn btn-light btn-lg bigbutton
 
-   `Getting started with SMRT </getstarted.html>`_
+   `Getting started with SMRT in Python </getstarted.html>`_
 
+.. class:: btn btn-light btn-lg bigbutton
+
+   `Try with the online SMRT simulator <https://snow.univ-grenoble-alpes.fr/smrt-app/>`_
 
 Using SMRT is easy
 ---------------------
