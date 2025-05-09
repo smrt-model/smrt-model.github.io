@@ -54,6 +54,8 @@ The detailed documentation with all SMRT functions and objects is in the `refere
 
 In addition, a graph `"What's in SMRT" <whatsinsmrt/index.html>`_ highlights all the components currently implemented
 
+You can also explore the documentation and find code examples via the `AI Wiki <https://deepwiki.com/smrt-model/smrt>`_. Please let us know your experience of using this via the `SMRT discussions <https://github.com/smrt-model/smrt/discussions>`_.
+
 Code examples
 --------------
 
