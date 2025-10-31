@@ -29,6 +29,7 @@ Publications
 * `The Microwave Snow Grain Size: A New Concept to Predict Satellite Observations Over Snow-Covered Regions <https://doi.org/10.1029/2021AV000630>`_ (Picard et al., 2022)
 * `Remote Sensing of Surface Melt on Antarctica: Opportunities and Challenges <https://ieeexplore.ieee.org/document/9928323>`_ (de Roda Husman et al., 2022)
 * `Evaluation and Application of SMRT Model for L-Band Brightness Temperature Simulation in Arctic Sea Ice <https://doi.org/10.3390/rs15153889>`_ (Fan et al., 2023)
+* `A prototype passive microwave retrieval algorithm for tundra snow density <https://doi.org/10.5194/tc-19-5259-2025>`_ (Welch and Kelly, 2025)
 
 Presentations
 -------------
